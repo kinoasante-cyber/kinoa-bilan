@@ -348,22 +348,33 @@
 
   <!-- S6: SLS -->
   <div class="step" id="s6">
-    <p class="step-label">Test 4 sur 5</p>
-    <div class="test-card">
-      <div class="test-icon-row"><div class="test-icon-circle">🦵</div><h2>Équilibre unipodal (SLS)</h2></div>
-      <p class="desc">Évalue votre équilibre statique — prédicteur du risque de chute et de la santé neuromotrice.</p>
-      <div class="how-to"><p><strong>Comment faire :</strong> Debout près d'un mur (sans le toucher), levez un pied. Chronométrez combien de secondes vous tenez sur <strong>une jambe, yeux ouverts</strong>. Maximum 60 secondes.</p></div>
-      <div class="result-rpe-row">
-        <div class="result-field"><input type="number" id="t_sls" placeholder="20" min="1" max="60"><span class="unit">secondes</span><button class="skip-btn" onclick="document.getElementById('t_sls').value='';goStep(7)">Passer</button></div>
-        <div class="rpe-wrap">
-          <div class="rpe-label-row"><span>Difficulté ressentie</span><strong id="rpe-sls-label">— / 10</strong></div>
-          <div class="rpe-scale" id="rpe-sls-scale"></div>
-          <div class="rpe-desc">1 = Très stable &nbsp;·&nbsp; 5 = Instable &nbsp;·&nbsp; 10 = Impossible</div>
+  <p class="step-label">Test 4 sur 5</p>
+  <div class="test-card">
+    <div class="test-icon-row"><div class="test-icon-circle">🦵</div><h2>Équilibre unipodal (SLS)</h2></div>
+    <p class="desc">Évalue votre équilibre statique — prédicteur du risque de chute et de la santé neuromotrice.</p>
+    <div class="how-to"><p><strong>Comment faire :</strong> Debout près d'un mur (sans le toucher), levez un pied. Chronométrez combien de secondes vous tenez sur <strong>une jambe, yeux ouverts</strong>. Maximum 60 secondes. Faites les deux côtés.</p></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
+      <div>
+        <div style="font-size:13px;font-weight:500;color:var(--navy);margin-bottom:8px;">🦵 Jambe gauche</div>
+        <div class="result-field"><input type="number" id="t_sls_g" placeholder="20" min="1" max="60"><span class="unit">s</span></div>
+        <div class="rpe-wrap" style="margin-top:8px;">
+          <div class="rpe-label-row"><span>Difficulté</span><strong id="rpe-sls-g-label">— / 10</strong></div>
+          <div class="rpe-scale" id="rpe-sls-g-scale"></div>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:500;color:var(--navy);margin-bottom:8px;">🦵 Jambe droite</div>
+        <div class="result-field"><input type="number" id="t_sls_d" placeholder="20" min="1" max="60"><span class="unit">s</span></div>
+        <div class="rpe-wrap" style="margin-top:8px;">
+          <div class="rpe-label-row"><span>Difficulté</span><strong id="rpe-sls-d-label">— / 10</strong></div>
+          <div class="rpe-scale" id="rpe-sls-d-scale"></div>
         </div>
       </div>
     </div>
-    <div class="nav-row"><button class="btn" onclick="goStep(5)">← Retour</button><button class="btn btn-primary" onclick="goStep(7)">Suivant →</button></div>
+    <p style="font-size:12px;color:var(--text-faint);text-align:center;">Le score retenu sera le pire des deux côtés.</p>
   </div>
+  <div class="nav-row"><button class="btn" onclick="goStep(5)">← Retour</button><button class="btn btn-primary" onclick="goStep(7)">Suivant →</button></div>
+</div>
 
   <!-- S7: 5STS -->
   <div class="step" id="s7">
