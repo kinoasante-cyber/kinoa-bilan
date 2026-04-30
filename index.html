@@ -11,434 +11,146 @@
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --orange: #E8470A;
-    --orange-light: #FDF0EB;
-    --orange-dark: #C23B08;
-    --navy: #1A2340;
-    --navy-mid: #2D3A5C;
-    --lavender: #EEF0F8;
-    --lavender-dark: #DDE1F0;
-    --text: #1A2340;
-    --text-muted: #4A5270;
-    --text-faint: #8890AA;
+    --orange: #E8470A; --orange-light: #FDF0EB; --orange-dark: #C23B08;
+    --navy: #1A2340; --navy-mid: #2D3A5C;
+    --lavender: #EEF0F8; --lavender-dark: #DDE1F0;
+    --text: #1A2340; --text-muted: #4A5270; --text-faint: #8890AA;
     --border: rgba(26,35,64,0.12);
-    --bg: #EEF0F8;
-    --bg-card: #ffffff;
-    --bg-surface: #F5F6FB;
-    --radius: 16px;
-    --radius-sm: 10px;
-    --green: #1D9E75;
-    --green-light: #E1F5EE;
-    --yellow: #B45309;
-    --yellow-light: #FEF3C7;
-    --red: #991B1B;
-    --red-light: #FEE2E2;
+    --bg: #EEF0F8; --bg-card: #ffffff; --bg-surface: #F5F6FB;
+    --radius: 16px; --radius-sm: 10px;
+    --green: #1D9E75; --green-light: #E1F5EE;
+    --yellow: #B45309; --yellow-light: #FEF3C7;
+    --red: #991B1B; --red-light: #FEE2E2;
   }
   html { scroll-behavior: smooth; }
-  body {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 16px; color: var(--text);
-    background: var(--bg); min-height: 100vh; line-height: 1.6;
-  }
-
-  /* NAV */
-  nav {
-    position: sticky; top: 0; z-index: 100;
-    background: rgba(238,240,248,0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    padding: 0 2rem;
-    display: flex; align-items: center; justify-content: space-between;
-    height: 64px;
-  }
-  .logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 22px; font-weight: 800;
-    color: var(--navy); text-decoration: none; letter-spacing: -0.01em;
-  }
+  body { font-family: 'DM Sans', sans-serif; font-size: 16px; color: var(--text); background: var(--bg); min-height: 100vh; line-height: 1.6; }
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(238,240,248,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .logo { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 800; color: var(--navy); text-decoration: none; letter-spacing: -0.01em; }
   .logo span { color: var(--orange); }
-  .nav-cta {
-    background: var(--orange); color: white;
-    padding: 8px 20px; border-radius: 50px;
-    font-size: 14px; font-weight: 500; text-decoration: none;
-    transition: background 0.15s;
-  }
+  .nav-cta { background: var(--orange); color: white; padding: 8px 20px; border-radius: 50px; font-size: 14px; font-weight: 500; text-decoration: none; transition: background 0.15s; }
   .nav-cta:hover { background: var(--orange-dark); }
-
-  /* HERO */
-  .hero {
-    max-width: 680px; margin: 0 auto;
-    padding: 4rem 1.5rem 2.5rem; text-align: center;
-  }
-  .pill {
-    display: inline-block;
-    font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
-    color: var(--orange); background: var(--orange-light);
-    padding: 5px 16px; border-radius: 20px;
-    margin-bottom: 1.25rem; text-transform: uppercase;
-    border: 1px solid rgba(232,71,10,0.2);
-  }
-  h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(30px, 5vw, 46px);
-    line-height: 1.1; letter-spacing: -0.02em;
-    color: var(--navy); margin-bottom: 1rem; font-weight: 800;
-  }
+  .hero { max-width: 680px; margin: 0 auto; padding: 4rem 1.5rem 2.5rem; text-align: center; }
+  .pill { display: inline-block; font-size: 11px; font-weight: 500; letter-spacing: 0.1em; color: var(--orange); background: var(--orange-light); padding: 5px 16px; border-radius: 20px; margin-bottom: 1.25rem; text-transform: uppercase; border: 1px solid rgba(232,71,10,0.2); }
+  h1 { font-family: 'Playfair Display', serif; font-size: clamp(30px,5vw,46px); line-height: 1.1; letter-spacing: -0.02em; color: var(--navy); margin-bottom: 1rem; font-weight: 800; }
   h1 em { font-style: italic; color: var(--orange); }
-  .hero-sub {
-    font-size: 17px; color: var(--text-muted);
-    max-width: 500px; margin: 0 auto 2rem; line-height: 1.7;
-  }
-  .time-note {
-    font-size: 13px; color: var(--orange);
-    display: flex; align-items: center; justify-content: center; gap: 6px;
-  }
-
-  /* MAIN */
+  .hero-sub { font-size: 17px; color: var(--text-muted); max-width: 500px; margin: 0 auto 2rem; line-height: 1.7; }
+  .time-note { font-size: 13px; color: var(--orange); display: flex; align-items: center; justify-content: center; gap: 6px; }
   main { max-width: 580px; margin: 0 auto; padding: 2rem 1.5rem 5rem; }
-
-  /* PROGRESS */
   .progress-wrap { margin-bottom: 2rem; }
-  .progress-track {
-    height: 4px; background: var(--lavender-dark);
-    border-radius: 2px; overflow: hidden; margin-bottom: 0.5rem;
-  }
-  .progress-fill {
-    height: 100%; background: var(--orange);
-    border-radius: 2px; transition: width 0.4s ease;
-  }
-  .progress-label {
-    font-size: 12px; color: var(--text-faint);
-    display: flex; justify-content: space-between;
-  }
-
-  /* STEPS */
+  .progress-track { height: 4px; background: var(--lavender-dark); border-radius: 2px; overflow: hidden; margin-bottom: 0.5rem; }
+  .progress-fill { height: 100%; background: var(--orange); border-radius: 2px; transition: width 0.4s ease; }
+  .progress-label { font-size: 12px; color: var(--text-faint); display: flex; justify-content: space-between; }
   .step { display: none; animation: fadeUp 0.3s ease; }
   .step.active { display: block; }
-  @keyframes fadeUp {
-    from { opacity:0; transform: translateY(8px); }
-    to { opacity:1; transform: translateY(0); }
-  }
-  .step-label {
-    font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
-    color: var(--orange); text-transform: uppercase; margin-bottom: 1.5rem;
-  }
-
-  /* INTRO SCREEN */
-  .intro-card {
-    background: var(--bg-card); border: 1.5px solid var(--border);
-    border-radius: var(--radius); overflow: hidden; margin-bottom: 1.5rem;
-  }
-  .intro-header {
-    background: var(--navy); padding: 1.5rem 1.75rem;
-  }
-  .intro-header h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 22px; font-weight: 700; color: white;
-    letter-spacing: -0.01em; margin-bottom: 0.35rem;
-  }
+  @keyframes fadeUp { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+  .step-label { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; color: var(--orange); text-transform: uppercase; margin-bottom: 1.5rem; }
+  .intro-card { background: var(--bg-card); border: 1.5px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 1.5rem; }
+  .intro-header { background: var(--navy); padding: 1.5rem 1.75rem; }
+  .intro-header h2 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: white; letter-spacing: -0.01em; margin-bottom: 0.35rem; }
   .intro-header p { font-size: 14px; color: rgba(255,255,255,0.65); }
-  .test-overview-list { padding: 0; }
-  .test-overview-item {
-    display: flex; gap: 14px; align-items: flex-start;
-    padding: 1.125rem 1.75rem; border-bottom: 1px solid var(--border);
-  }
+  .test-overview-item { display: flex; gap: 14px; align-items: flex-start; padding: 1.125rem 1.75rem; border-bottom: 1px solid var(--border); }
   .test-overview-item:last-child { border-bottom: none; }
-  .toi-icon {
-    width: 40px; height: 40px; border-radius: 50%;
-    background: var(--orange-light); border: 1px solid rgba(232,71,10,0.2);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 18px; flex-shrink: 0; margin-top: 2px;
-  }
+  .toi-icon { width: 40px; height: 40px; border-radius: 50%; background: var(--orange-light); border: 1px solid rgba(232,71,10,0.2); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; margin-top: 2px; }
   .toi-body { flex: 1; }
-  .toi-title {
-    font-size: 14px; font-weight: 500; color: var(--navy); margin-bottom: 3px;
-  }
+  .toi-title { font-size: 14px; font-weight: 500; color: var(--navy); margin-bottom: 3px; }
   .toi-desc { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
-  .toi-badge {
-    font-size: 11px; font-weight: 500; padding: 2px 10px;
-    border-radius: 10px; background: var(--lavender-dark);
-    color: var(--text-muted); white-space: nowrap; margin-top: 4px;
-    display: inline-block;
-  }
-  .material-needed {
-    background: var(--orange-light); border: 1px solid rgba(232,71,10,0.2);
-    border-radius: var(--radius-sm); padding: 1rem 1.25rem; margin-bottom: 1.5rem;
-  }
-  .material-needed .m-title {
-    font-size: 12px; font-weight: 500; letter-spacing: 0.08em;
-    text-transform: uppercase; color: var(--orange); margin-bottom: 0.5rem;
-  }
-  .material-needed ul {
-    list-style: none; display: flex; flex-wrap: wrap; gap: 8px;
-  }
-  .material-needed ul li {
-    font-size: 13px; color: var(--text-muted);
-    background: white; border: 1px solid rgba(232,71,10,0.15);
-    border-radius: 6px; padding: 4px 12px;
-  }
-
-  /* FORM FIELDS */
+  .toi-badge { font-size: 11px; font-weight: 500; padding: 2px 10px; border-radius: 10px; background: var(--lavender-dark); color: var(--text-muted); white-space: nowrap; margin-top: 4px; display: inline-block; }
+  .material-needed { background: var(--orange-light); border: 1px solid rgba(232,71,10,0.2); border-radius: var(--radius-sm); padding: 1rem 1.25rem; margin-bottom: 1.5rem; }
+  .material-needed .m-title { font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--orange); margin-bottom: 0.5rem; }
+  .material-needed ul { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
+  .material-needed ul li { font-size: 13px; color: var(--text-muted); background: white; border: 1px solid rgba(232,71,10,0.15); border-radius: 6px; padding: 4px 12px; }
+  .api-key-wrap { background: var(--bg-surface); border: 1.5px solid var(--border); border-radius: var(--radius-sm); padding: 1rem 1.25rem; margin-bottom: 1.5rem; }
+  .api-key-wrap label { font-size: 13px; color: var(--text-muted); display: block; margin-bottom: 6px; font-weight: 500; }
+  .api-key-wrap .key-note { font-size: 11px; color: var(--text-faint); margin-top: 5px; line-height: 1.5; }
+  .api-key-input { width: 100%; height: 44px; padding: 0 14px; border: 1.5px solid var(--border); border-radius: var(--radius-sm); background: var(--bg-card); color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 14px; }
+  .api-key-input:focus { outline: none; border-color: var(--orange); box-shadow: 0 0 0 3px rgba(232,71,10,0.1); }
+  .api-notice { background: var(--lavender-dark); border-radius: var(--radius-sm); padding: 0.75rem 1rem; font-size: 13px; color: var(--text-muted); margin-top: 0.75rem; line-height: 1.5; }
   .field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
   .field { display: flex; flex-direction: column; gap: 6px; }
   .field label { font-size: 14px; color: var(--text-muted); }
-  .field input, .field select {
-    height: 48px; padding: 0 14px;
-    border: 1.5px solid var(--border); border-radius: var(--radius-sm);
-    background: var(--bg-card); color: var(--text);
-    font-family: 'DM Sans', sans-serif; font-size: 15px;
-    transition: border-color 0.15s; -webkit-appearance: none;
-  }
-  .field input:focus, .field select:focus {
-    outline: none; border-color: var(--orange);
-    box-shadow: 0 0 0 3px rgba(232,71,10,0.1);
-  }
+  .field input, .field select { height: 48px; padding: 0 14px; border: 1.5px solid var(--border); border-radius: var(--radius-sm); background: var(--bg-card); color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 15px; transition: border-color 0.15s; -webkit-appearance: none; }
+  .field input:focus, .field select:focus { outline: none; border-color: var(--orange); box-shadow: 0 0 0 3px rgba(232,71,10,0.1); }
   .slider-field { margin-bottom: 1.5rem; }
   .slider-label { font-size: 14px; color: var(--text-muted); display: flex; justify-content: space-between; margin-bottom: 8px; }
   .slider-label strong { font-weight: 500; color: var(--navy); }
   input[type=range] { width: 100%; accent-color: var(--orange); }
-
-  /* TEST CARD */
-  .test-card {
-    background: var(--bg-card); border: 1.5px solid var(--border);
-    border-radius: var(--radius); padding: 1.75rem; margin-bottom: 1.5rem;
-  }
-  .test-icon-row {
-    display: flex; align-items: center; gap: 12px; margin-bottom: 1rem;
-  }
-  .test-icon-circle {
-    width: 44px; height: 44px; border-radius: 50%;
-    background: var(--orange-light); border: 1px solid rgba(232,71,10,0.2);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 20px; flex-shrink: 0;
-  }
-  .test-card h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 20px; font-weight: 700; color: var(--navy);
-    letter-spacing: -0.01em;
-  }
-  .test-card .desc {
-    font-size: 14px; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.65;
-  }
-  .how-to {
-    background: var(--bg-surface); border-radius: var(--radius-sm);
-    padding: 1rem 1.125rem; margin-bottom: 1.25rem;
-    border-left: 3px solid var(--orange);
-  }
+  .test-card { background: var(--bg-card); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 1.75rem; margin-bottom: 1.5rem; }
+  .test-icon-row { display: flex; align-items: center; gap: 12px; margin-bottom: 1rem; }
+  .test-icon-circle { width: 44px; height: 44px; border-radius: 50%; background: var(--orange-light); border: 1px solid rgba(232,71,10,0.2); display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+  .test-card h2 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--navy); letter-spacing: -0.01em; }
+  .test-card .desc { font-size: 14px; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.65; }
+  .how-to { background: var(--bg-surface); border-radius: var(--radius-sm); padding: 1rem 1.125rem; margin-bottom: 1.25rem; border-left: 3px solid var(--orange); }
   .how-to p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
   .how-to strong { color: var(--navy); font-weight: 500; }
-
-  .result-rpe-row {
-    display: flex; flex-direction: column; gap: 12px;
-  }
+  .result-rpe-row { display: flex; flex-direction: column; gap: 12px; }
   .result-field { display: flex; align-items: center; gap: 10px; }
-  .result-field input {
-    width: 120px; height: 48px;
-    border: 1.5px solid var(--border); border-radius: var(--radius-sm);
-    padding: 0 14px; font-size: 20px; font-weight: 500;
-    font-family: 'DM Sans', sans-serif; color: var(--navy);
-    background: var(--bg-card); transition: border-color 0.15s;
-    -webkit-appearance: none;
-  }
-  .result-field input:focus {
-    outline: none; border-color: var(--orange);
-    box-shadow: 0 0 0 3px rgba(232,71,10,0.1);
-  }
+  .result-field input { width: 120px; height: 48px; border: 1.5px solid var(--border); border-radius: var(--radius-sm); padding: 0 14px; font-size: 20px; font-weight: 500; font-family: 'DM Sans', sans-serif; color: var(--navy); background: var(--bg-card); transition: border-color 0.15s; -webkit-appearance: none; }
+  .result-field input:focus { outline: none; border-color: var(--orange); box-shadow: 0 0 0 3px rgba(232,71,10,0.1); }
   .result-field .unit { font-size: 14px; color: var(--text-faint); }
-  .skip-btn {
-    font-size: 13px; color: var(--text-faint); margin-left: auto;
-    cursor: pointer; text-decoration: underline;
-    background: none; border: none; font-family: inherit;
-  }
-
-  /* RPE */
+  .skip-btn { font-size: 13px; color: var(--text-faint); margin-left: auto; cursor: pointer; text-decoration: underline; background: none; border: none; font-family: inherit; }
   .rpe-wrap { background: var(--bg-surface); border-radius: var(--radius-sm); padding: 0.875rem 1rem; }
   .rpe-label-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
   .rpe-label-row span { font-size: 13px; color: var(--text-muted); }
   .rpe-label-row strong { font-size: 14px; color: var(--navy); font-weight: 500; }
   .rpe-scale { display: flex; gap: 4px; }
-  .rpe-btn {
-    flex: 1; height: 36px; border-radius: 6px;
-    border: 1.5px solid var(--border); background: var(--bg-card);
-    font-size: 12px; font-weight: 500; cursor: pointer;
-    color: var(--text-muted); transition: all 0.12s;
-    font-family: 'DM Sans', sans-serif;
-  }
+  .rpe-btn { flex: 1; height: 36px; border-radius: 6px; border: 1.5px solid var(--border); background: var(--bg-card); font-size: 12px; font-weight: 500; cursor: pointer; color: var(--text-muted); transition: all 0.12s; font-family: 'DM Sans', sans-serif; }
   .rpe-btn:hover { border-color: var(--orange); color: var(--orange); }
   .rpe-btn.selected { background: var(--orange); color: white; border-color: var(--orange); }
   .rpe-desc { font-size: 11px; color: var(--text-faint); margin-top: 5px; text-align: center; }
-
-  /* BUTTONS */
-  .nav-row { display: flex; align-items: center; gap: 10px; margin-top: 1.5rem; }
-  .btn {
-    height: 48px; padding: 0 22px;
-    border-radius: 50px; font-family: 'DM Sans', sans-serif;
-    font-size: 15px; font-weight: 500; cursor: pointer;
-    border: 1.5px solid var(--border);
-    background: var(--bg-card); color: var(--text);
-    transition: all 0.15s;
-  }
+  .nav-row { display: flex; align-items: center; gap: 10px; margin-top: 1.5rem; flex-wrap: wrap; }
+  .btn { height: 48px; padding: 0 22px; border-radius: 50px; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 500; cursor: pointer; border: 1.5px solid var(--border); background: var(--bg-card); color: var(--text); transition: all 0.15s; }
   .btn:hover { background: var(--lavender-dark); }
-  .btn-primary {
-    background: var(--orange); color: white;
-    border-color: var(--orange); margin-left: auto;
-    padding: 0 28px;
-  }
+  .btn-primary { background: var(--orange); color: white; border-color: var(--orange); margin-left: auto; padding: 0 28px; }
   .btn-primary:hover { background: var(--orange-dark); border-color: var(--orange-dark); }
-
-  /* RESULTS */
-  .score-hero {
-    text-align: center; padding: 2.5rem 1.5rem;
-    background: var(--navy); border-radius: var(--radius);
-    margin-bottom: 1.5rem;
-  }
-  .score-big {
-    font-family: 'Playfair Display', serif;
-    font-size: 80px; line-height: 1; font-weight: 800;
-    color: white; letter-spacing: -0.03em; margin-bottom: 0.25rem;
-  }
+  .btn-secondary { background: var(--navy); color: white; border-color: var(--navy); padding: 0 20px; }
+  .score-hero { text-align: center; padding: 2.5rem 1.5rem; background: var(--navy); border-radius: var(--radius); margin-bottom: 1.5rem; }
+  .score-big { font-family: 'Playfair Display', serif; font-size: 80px; line-height: 1; font-weight: 800; color: white; letter-spacing: -0.03em; margin-bottom: 0.25rem; }
   .score-sub { font-size: 14px; color: rgba(255,255,255,0.6); }
-  .score-verdict {
-    display: inline-block; margin-top: 0.875rem;
-    font-size: 13px; font-weight: 500; padding: 5px 18px;
-    border-radius: 20px; color: white;
-    border: 1px solid rgba(255,255,255,0.25);
-  }
-
-  .section-title {
-    font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
-    text-transform: uppercase; color: var(--orange);
-    margin-bottom: 0.75rem; margin-top: 2rem;
-  }
-
-  /* DOMAIN CARDS WITH BENCHMARK */
-  .domain-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-  .domain-card {
-    background: var(--bg-card); border: 1.5px solid var(--border);
-    border-radius: var(--radius-sm); padding: 1rem 1.125rem;
-  }
+  .score-verdict { display: inline-block; margin-top: 0.875rem; font-size: 13px; font-weight: 500; padding: 5px 18px; border-radius: 20px; color: white; border: 1px solid rgba(255,255,255,0.25); }
+  .section-title { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: 0.75rem; margin-top: 2rem; }
+  .domain-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; }
+  .domain-card { background: var(--bg-card); border: 1.5px solid var(--border); border-radius: var(--radius-sm); padding: 1rem 1.125rem; }
   .domain-card .d-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.625rem; }
   .domain-card .d-label { font-size: 11px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.06em; }
-  .domain-card .d-tag {
-    font-size: 11px; font-weight: 500; padding: 3px 10px;
-    border-radius: 10px; display: inline-block;
-  }
+  .domain-card .d-tag { font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 10px; display: inline-block; }
   .tag-v { background: var(--green-light); color: #085041; }
   .tag-j { background: var(--yellow-light); color: #92400E; }
   .tag-r { background: var(--red-light); color: var(--red); }
   .tag-n { background: var(--bg-surface); color: var(--text-faint); }
   .domain-card .d-score { font-size: 26px; font-weight: 500; margin-bottom: 4px; }
-  .d-benchmark {
-    font-size: 12px; color: var(--text-faint); margin-top: 6px;
-    padding-top: 6px; border-top: 1px solid var(--border);
-    display: flex; flex-direction: column; gap: 2px;
-  }
+  .d-benchmark { font-size: 12px; color: var(--text-faint); margin-top: 6px; padding-top: 6px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 2px; }
   .d-benchmark span { display: flex; justify-content: space-between; }
   .d-benchmark .b-val { color: var(--text-muted); font-weight: 500; }
-  .d-rpe { font-size: 11px; color: var(--text-faint); margin-top: 4px; }
-
+  .d-risk { font-size: 11px; color: var(--red); margin-top: 4px; font-weight: 500; }
   .radar-wrap { height: 280px; position: relative; margin: 0.5rem 0 1rem; }
-
-  .reco-card {
-    background: var(--bg-card); border: 1.5px solid var(--border);
-    border-radius: var(--radius-sm); padding: 1.125rem 1.25rem;
-    margin-bottom: 0.75rem; display: flex; gap: 12px; align-items: flex-start;
-  }
-  .reco-num {
-    width: 26px; height: 26px; border-radius: 50%;
-    background: var(--orange); color: white;
-    font-size: 12px; font-weight: 500; flex-shrink: 0;
-    display: flex; align-items: center; justify-content: center; margin-top: 1px;
-  }
-  .reco-card p { font-size: 14px; color: var(--text-muted); line-height: 1.65; }
-
-  /* RAPPORT IA */
-  .rapport-wrap {
-    background: var(--bg-card); border: 1.5px solid var(--border);
-    border-radius: var(--radius); overflow: hidden; margin-top: 0.5rem;
-  }
-  .rapport-header {
-    background: var(--navy); padding: 1.25rem 1.5rem;
-    display: flex; align-items: center; gap: 10px;
-  }
-  .rapport-header h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 18px; font-weight: 700; color: white;
-    letter-spacing: -0.01em;
-  }
-  .rapport-header .ai-badge {
-    font-size: 10px; font-weight: 500; letter-spacing: 0.08em;
-    background: rgba(232,71,10,0.4); color: rgba(255,255,255,0.9);
-    padding: 3px 10px; border-radius: 10px; text-transform: uppercase;
-  }
+  .rapport-wrap { background: var(--bg-card); border: 1.5px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-top: 0.5rem; }
+  .rapport-header { background: var(--navy); padding: 1.25rem 1.5rem; display: flex; align-items: center; gap: 10px; }
+  .rapport-header h3 { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: white; letter-spacing: -0.01em; }
+  .rapport-header .ai-badge { font-size: 10px; font-weight: 500; letter-spacing: 0.08em; background: rgba(232,71,10,0.4); color: rgba(255,255,255,0.9); padding: 3px 10px; border-radius: 10px; text-transform: uppercase; }
   .rapport-body { padding: 1.5rem; }
   .rapport-body p { font-size: 14px; color: var(--text-muted); line-height: 1.75; margin-bottom: 0.75rem; }
-  .rapport-body h4 {
-    font-size: 13px; font-weight: 500; letter-spacing: 0.06em;
-    text-transform: uppercase; color: var(--orange);
-    margin-top: 1.25rem; margin-bottom: 0.5rem;
-  }
-  .rapport-body ul { padding-left: 1.25rem; }
+  .rapport-body h4 { font-size: 13px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--orange); margin-top: 1.25rem; margin-bottom: 0.5rem; }
+  .rapport-body ul { padding-left: 1.25rem; margin-bottom: 0.75rem; }
   .rapport-body ul li { font-size: 14px; color: var(--text-muted); line-height: 1.7; margin-bottom: 4px; }
-  .rapport-loading {
-    padding: 2rem; text-align: center;
-  }
-  .rapport-loading .spinner {
-    width: 32px; height: 32px; border: 3px solid var(--lavender-dark);
-    border-top-color: var(--orange); border-radius: 50%;
-    animation: spin 0.8s linear infinite; margin: 0 auto 1rem;
-  }
+  .rapport-body strong { color: var(--navy); }
+  .rapport-loading { padding: 2rem; text-align: center; }
+  .spinner { width: 32px; height: 32px; border: 3px solid var(--lavender-dark); border-top-color: var(--orange); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 1rem; }
   @keyframes spin { to { transform: rotate(360deg); } }
   .rapport-loading p { font-size: 14px; color: var(--text-faint); }
-
-  /* PLAN 4 SEMAINES */
-  .plan-card {
-    background: var(--bg-card); border: 1.5px solid var(--border);
-    border-radius: var(--radius-sm); padding: 1.125rem 1.25rem;
-    margin-bottom: 0.75rem;
-  }
+  .plan-card { background: var(--bg-card); border: 1.5px solid var(--border); border-radius: var(--radius-sm); padding: 1.125rem 1.25rem; margin-bottom: 0.75rem; }
   .plan-card .pc-header { display: flex; align-items: center; gap: 10px; margin-bottom: 0.75rem; }
-  .plan-card .pc-num {
-    width: 28px; height: 28px; border-radius: 50%;
-    background: var(--orange-light); border: 1px solid rgba(232,71,10,0.2);
-    color: var(--orange); font-size: 13px; font-weight: 500;
-    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-  }
+  .plan-card .pc-num { width: 28px; height: 28px; border-radius: 50%; background: var(--orange-light); border: 1px solid rgba(232,71,10,0.2); color: var(--orange); font-size: 13px; font-weight: 500; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
   .plan-card .pc-title { font-size: 15px; font-weight: 500; color: var(--navy); }
   .plan-card .pc-body { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
-  .plan-card .pc-params {
-    display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px;
-  }
-  .plan-card .pc-param {
-    font-size: 11px; font-weight: 500; padding: 3px 10px;
-    border-radius: 8px; background: var(--lavender-dark); color: var(--text-muted);
-  }
-
-  .cta-block {
-    background: var(--orange); border-radius: var(--radius);
-    padding: 2rem 2rem; text-align: center; margin-top: 2rem;
-  }
-  .cta-block h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 24px; font-weight: 700; color: white;
-    margin-bottom: 0.5rem; letter-spacing: -0.01em;
-  }
+  .plan-card .pc-params { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .plan-card .pc-param { font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 8px; background: var(--lavender-dark); color: var(--text-muted); }
+  .cta-block { background: var(--orange); border-radius: var(--radius); padding: 2rem; text-align: center; margin-top: 2rem; }
+  .cta-block h3 { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; color: white; margin-bottom: 0.5rem; letter-spacing: -0.01em; }
   .cta-block p { font-size: 14px; color: rgba(255,255,255,0.85); margin-bottom: 1.25rem; line-height: 1.6; }
-  .btn-white {
-    display: inline-block; background: white; color: var(--orange);
-    padding: 13px 30px; border-radius: 50px;
-    font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 500;
-    text-decoration: none; transition: opacity 0.15s;
-  }
+  .btn-white { display: inline-block; background: white; color: var(--orange); padding: 13px 30px; border-radius: 50px; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 500; text-decoration: none; transition: opacity 0.15s; }
   .btn-white:hover { opacity: 0.92; }
-
   .restart-row { text-align: center; margin-top: 1.5rem; }
-  .restart-btn {
-    font-size: 14px; color: var(--text-faint);
-    background: none; border: none; cursor: pointer;
-    font-family: inherit; text-decoration: underline;
-  }
-
+  .restart-btn { font-size: 14px; color: var(--text-faint); background: none; border: none; cursor: pointer; font-family: inherit; text-decoration: underline; }
   @media (max-width: 480px) {
     .field-grid { grid-template-columns: 1fr; }
     .domain-grid { grid-template-columns: 1fr; }
@@ -448,6 +160,8 @@
     h1 { font-size: 28px; }
     .rpe-scale { gap: 2px; }
     .rpe-btn { font-size: 11px; height: 32px; }
+    .nav-row { gap: 8px; }
+    .btn-primary { margin-left: 0; width: 100%; justify-content: center; }
   }
 </style>
 </head>
@@ -467,19 +181,13 @@
 
 <main>
   <div class="progress-wrap">
-    <div class="progress-track">
-      <div class="progress-fill" id="progress-bar" style="width:0%"></div>
-    </div>
-    <div class="progress-label">
-      <span id="prog-left">Intro</span>
-      <span id="prog-right">Étape 1 / 7</span>
-    </div>
+    <div class="progress-track"><div class="progress-fill" id="progress-bar" style="width:0%"></div></div>
+    <div class="progress-label"><span id="prog-left">Intro</span><span id="prog-right">Étape 1 / 8</span></div>
   </div>
 
-  <!-- S0: INTRO — présentation des tests -->
+  <!-- S0: INTRO -->
   <div class="step active" id="s0">
     <p class="step-label">Avant de commencer</p>
-
     <div class="material-needed">
       <div class="m-title">🧰 Ce dont vous aurez besoin</div>
       <ul>
@@ -490,70 +198,79 @@
         <li>📐 Ruban à mesurer</li>
       </ul>
     </div>
-
     <div class="intro-card">
       <div class="intro-header">
         <h2>Les 5 tests que vous allez faire</h2>
-        <p>Chaque test est standardisé et utilisé cliniquement pour évaluer les personnes vivant avec l'arthrose du genou.</p>
+        <p>Chaque test est standardisé et utilisé cliniquement pour les personnes vivant avec l'arthrose du genou.</p>
       </div>
-      <div class="test-overview-list">
-        <div class="test-overview-item">
-          <div class="toi-icon">🚶</div>
-          <div class="toi-body">
-            <div class="toi-title">Test 1 — Marche de 6 minutes (6MWT)</div>
-            <div class="toi-desc">Marchez le plus loin possible sur une surface plane pendant 6 minutes exactes. Mesurez la distance totale en mètres. Vous pouvez ralentir, mais ne vous arrêtez pas.</div>
-            <span class="toi-badge">📏 Espace plat ≥20m · Chrono 6 min</span>
-          </div>
+      <div class="test-overview-item">
+        <div class="toi-icon">🚶</div>
+        <div class="toi-body">
+          <div class="toi-title">Test 1 — Marche de 6 minutes (6MWT)</div>
+          <div class="toi-desc">Marchez le plus loin possible sur une surface plane pendant 6 minutes. Mesurez la distance totale en mètres.</div>
+          <span class="toi-badge">📏 Surface plate ≥20m · Chrono 6 min</span>
         </div>
-        <div class="test-overview-item">
-          <div class="toi-icon">🪑</div>
-          <div class="toi-body">
-            <div class="toi-title">Test 2 — Lever de chaise 30 secondes (CS-30)</div>
-            <div class="toi-desc">Assis sur une chaise, bras croisés sur la poitrine. Levez-vous complètement puis rasseyez-vous. Comptez le maximum de répétitions en 30 secondes exactes.</div>
-            <span class="toi-badge">🪑 Chaise sans accoudoirs · Chrono 30 s</span>
-          </div>
+      </div>
+      <div class="test-overview-item">
+        <div class="toi-icon">🪑</div>
+        <div class="toi-body">
+          <div class="toi-title">Test 2 — Lever de chaise 30 s (CS-30)</div>
+          <div class="toi-desc">Assis, bras croisés. Levez-vous et rasseyez-vous le maximum de fois en 30 secondes.</div>
+          <span class="toi-badge">🪑 Chaise sans accoudoirs · Chrono 30 s</span>
         </div>
-        <div class="test-overview-item">
-          <div class="toi-icon">⏱</div>
-          <div class="toi-body">
-            <div class="toi-title">Test 3 — Lever et marcher (TUG)</div>
-            <div class="toi-desc">Placez un repère à 3 mètres de votre chaise. Chronométrez le temps pour vous lever, marcher jusqu'au repère, faire demi-tour et revenir vous asseoir.</div>
-            <span class="toi-badge">📐 Marque à 3 m · Chrono en secondes</span>
-          </div>
+      </div>
+      <div class="test-overview-item">
+        <div class="toi-icon">⏱</div>
+        <div class="toi-body">
+          <div class="toi-title">Test 3 — Lever et marcher (TUG)</div>
+          <div class="toi-desc">Repère à 3 mètres. Chronométrez : se lever, marcher jusqu'au repère, demi-tour, revenir s'asseoir.</div>
+          <span class="toi-badge">📐 Repère à 3 m · Chrono en secondes</span>
         </div>
-        <div class="test-overview-item">
-          <div class="toi-icon">🦵</div>
-          <div class="toi-body">
-            <div class="toi-title">Test 4 — Équilibre sur une jambe (SLS)</div>
-            <div class="toi-desc">Debout près d'un mur sans le toucher, levez un pied. Chronométrez combien de secondes vous tenez sur une jambe, yeux ouverts. Maximum 60 secondes.</div>
-            <span class="toi-badge">🧱 Près d'un mur · Yeux ouverts · Max 60 s</span>
-          </div>
+      </div>
+      <div class="test-overview-item">
+        <div class="toi-icon">🦵</div>
+        <div class="toi-body">
+          <div class="toi-title">Test 4 — Équilibre sur une jambe (SLS)</div>
+          <div class="toi-desc">Près d'un mur, levez un pied. Chronométrez combien de secondes vous tenez, yeux ouverts. Maximum 60 s.</div>
+          <span class="toi-badge">🧱 Près d'un mur · Yeux ouverts · Max 60 s</span>
         </div>
-        <div class="test-overview-item">
-          <div class="toi-icon">⚡</div>
-          <div class="toi-body">
-            <div class="toi-title">Test 5 — Lever de chaise × 5 (5STS)</div>
-            <div class="toi-desc">Assis, bras croisés. Chronométrez le temps pour vous lever et vous rasseoir 5 fois de suite, aussi vite que possible de façon sécuritaire.</div>
-            <span class="toi-badge">🪑 Chaise · Chrono en secondes · × 5 répétitions</span>
-          </div>
+      </div>
+      <div class="test-overview-item">
+        <div class="toi-icon">⚡</div>
+        <div class="toi-body">
+          <div class="toi-title">Test 5 — Lever de chaise × 5 (5STS)</div>
+          <div class="toi-desc">Assis, bras croisés. Chronométrez le temps pour vous lever et rasseoir 5 fois, aussi vite que possible.</div>
+          <span class="toi-badge">🪑 × 5 répétitions · Chrono en secondes</span>
         </div>
       </div>
     </div>
+    <div class="nav-row"><div style="flex:1"></div><button class="btn btn-primary" onclick="goStep(1)">Compris, commencer →</button></div>
+  </div>
 
+  <!-- S1: CLÉ API -->
+  <div class="step" id="s1">
+    <p class="step-label">Rapport IA personnalisé</p>
+    <div class="api-key-wrap">
+      <label>🔑 Votre clé API OpenAI</label>
+      <input type="password" class="api-key-input" id="openai-key" placeholder="sk-proj-...">
+      <div class="key-note">Votre clé n'est jamais sauvegardée ni transmise à nos serveurs. Elle est utilisée uniquement dans votre navigateur pour générer votre rapport clinique personnalisé via OpenAI.</div>
+    </div>
+    <div class="api-notice">
+      💡 Sans clé API, vous recevrez quand même vos scores, benchmarks et un plan de base. La clé API permet de générer un rapport clinique complet et personnalisé par IA.
+    </div>
     <div class="nav-row">
-      <div style="flex:1"></div>
-      <button class="btn btn-primary" onclick="goStep(1)">Compris, commencer →</button>
+      <button class="btn" onclick="goStep(0)">← Retour</button>
+      <button class="btn btn-secondary" onclick="goStep(2)" style="margin-left:auto">Sans IA →</button>
+      <button class="btn btn-primary" onclick="saveKeyAndContinue()" style="margin-left:8px">Avec ma clé →</button>
     </div>
   </div>
 
-  <!-- S1: Profil -->
-  <div class="step" id="s1">
+  <!-- S2: Profil -->
+  <div class="step" id="s2">
     <p class="step-label">Votre profil</p>
     <div class="field-grid">
       <div class="field"><label>Âge</label><input type="number" id="age" min="40" max="90" value="65"></div>
-      <div class="field"><label>Sexe</label>
-        <select id="sexe"><option value="H">Homme</option><option value="F">Femme</option></select>
-      </div>
+      <div class="field"><label>Sexe</label><select id="sexe"><option value="H">Homme</option><option value="F">Femme</option></select></div>
       <div class="field"><label>Poids (kg)</label><input type="number" id="poids" min="40" max="200" value="80"></div>
       <div class="field"><label>Taille (cm)</label><input type="number" id="taille" min="140" max="210" value="170"></div>
     </div>
@@ -561,342 +278,193 @@
       <div class="slider-label"><span>Tour de taille (cm)</span><strong id="tw-out">90</strong></div>
       <input type="range" id="tour-taille" min="60" max="140" value="90" oninput="document.getElementById('tw-out').textContent=this.value">
     </div>
-    <div class="nav-row">
-      <button class="btn" onclick="goStep(0)">← Retour</button>
-      <button class="btn btn-primary" onclick="goStep(2)">Commencer les tests →</button>
-    </div>
+    <div class="nav-row"><button class="btn" onclick="goStep(1)">← Retour</button><button class="btn btn-primary" onclick="goStep(3)">Commencer les tests →</button></div>
   </div>
 
-  <!-- S2: 6MWT -->
-  <div class="step" id="s2">
+  <!-- S3: 6MWT -->
+  <div class="step" id="s3">
     <p class="step-label">Test 1 sur 5</p>
     <div class="test-card">
-      <div class="test-icon-row">
-        <div class="test-icon-circle">🚶</div>
-        <h2>Test de marche de 6 minutes</h2>
-      </div>
+      <div class="test-icon-row"><div class="test-icon-circle">🚶</div><h2>Test de marche de 6 minutes</h2></div>
       <p class="desc">Mesure votre endurance cardiorespiratoire et votre capacité fonctionnelle globale.</p>
-      <div class="how-to">
-        <p><strong>Comment faire :</strong> Marchez le plus loin possible sur une surface plane pendant exactement <strong>6 minutes</strong>. Vous pouvez ralentir mais ne vous arrêtez pas. Mesurez la distance totale parcourue en mètres.</p>
-      </div>
+      <div class="how-to"><p><strong>Comment faire :</strong> Marchez le plus loin possible sur une surface plane pendant exactement <strong>6 minutes</strong>. Vous pouvez ralentir mais ne vous arrêtez pas. Mesurez la distance totale en mètres.</p></div>
       <div class="result-rpe-row">
-        <div class="result-field">
-          <input type="number" id="t_6mwt" placeholder="420" min="50" max="1000">
-          <span class="unit">mètres</span>
-          <button class="skip-btn" onclick="document.getElementById('t_6mwt').value='';goStep(3)">Passer ce test</button>
-        </div>
+        <div class="result-field"><input type="number" id="t_6mwt" placeholder="420" min="50" max="1000"><span class="unit">mètres</span><button class="skip-btn" onclick="document.getElementById('t_6mwt').value='';goStep(4)">Passer</button></div>
         <div class="rpe-wrap">
-          <div class="rpe-label-row">
-            <span>Effort perçu (RPE)</span>
-            <strong id="rpe-6mwt-label">— / 10</strong>
-          </div>
-          <div class="rpe-scale" id="rpe-6mwt">
-            <button class="rpe-btn" onclick="setRPE('rpe_6mwt',1,this)">1</button>
-            <button class="rpe-btn" onclick="setRPE('rpe_6mwt',2,this)">2</button>
-            <button class="rpe-btn" onclick="setRPE('rpe_6mwt',3,this)">3</button>
-            <button class="rpe-btn" onclick="setRPE('rpe_6mwt',4,this)">4</button>
-            <button class="rpe-btn" onclick="setRPE('rpe_6mwt',5,this)">5</button>
-            <button class="rpe-btn" onclick="setRPE('rpe_6mwt',6,this)">6</button>
-            <button class="rpe-btn" onclick="setRPE('rpe_6mwt',7,this)">7</button>
-            <button class="rpe-btn" onclick="setRPE('rpe_6mwt',8,this)">8</button>
-            <button class="rpe-btn" onclick="setRPE('rpe_6mwt',9,this)">9</button>
-            <button class="rpe-btn" onclick="setRPE('rpe_6mwt',10,this)">10</button>
-          </div>
+          <div class="rpe-label-row"><span>Effort perçu (RPE)</span><strong id="rpe-6mwt-label">— / 10</strong></div>
+          <div class="rpe-scale" id="rpe-6mwt-scale"></div>
           <div class="rpe-desc">1 = Très facile &nbsp;·&nbsp; 5 = Modéré &nbsp;·&nbsp; 10 = Effort maximal</div>
         </div>
       </div>
     </div>
-    <div class="nav-row">
-      <button class="btn" onclick="goStep(1)">← Retour</button>
-      <button class="btn btn-primary" onclick="goStep(3)">Suivant →</button>
-    </div>
+    <div class="nav-row"><button class="btn" onclick="goStep(2)">← Retour</button><button class="btn btn-primary" onclick="goStep(4)">Suivant →</button></div>
   </div>
 
-  <!-- S3: Chair Stand -->
-  <div class="step" id="s3">
+  <!-- S4: CS-30 -->
+  <div class="step" id="s4">
     <p class="step-label">Test 2 sur 5</p>
     <div class="test-card">
-      <div class="test-icon-row">
-        <div class="test-icon-circle">🪑</div>
-        <h2>30-Second Chair Stand</h2>
-      </div>
-      <p class="desc">Évalue la force et l'endurance musculaire de vos membres inférieurs.</p>
-      <div class="how-to">
-        <p><strong>Comment faire :</strong> Assis sur une chaise sans accoudoirs, les bras <strong>croisés sur la poitrine</strong>. Levez-vous complètement, rasseyez-vous. Répétez le maximum de fois possible en <strong>30 secondes exactement</strong>.</p>
-      </div>
+      <div class="test-icon-row"><div class="test-icon-circle">🪑</div><h2>30-Second Chair Stand</h2></div>
+      <p class="desc">Évalue la force et la puissance fonctionnelle de vos membres inférieurs.</p>
+      <div class="how-to"><p><strong>Comment faire :</strong> Assis sur une chaise sans accoudoirs, les bras <strong>croisés sur la poitrine</strong>. Levez-vous complètement, rasseyez-vous. Répétez le maximum de fois en <strong>30 secondes exactement</strong>.</p></div>
       <div class="result-rpe-row">
-        <div class="result-field">
-          <input type="number" id="t_cs" placeholder="12" min="1" max="40">
-          <span class="unit">répétitions</span>
-          <button class="skip-btn" onclick="document.getElementById('t_cs').value='';goStep(4)">Passer ce test</button>
-        </div>
+        <div class="result-field"><input type="number" id="t_cs" placeholder="12" min="1" max="40"><span class="unit">répétitions</span><button class="skip-btn" onclick="document.getElementById('t_cs').value='';goStep(5)">Passer</button></div>
         <div class="rpe-wrap">
-          <div class="rpe-label-row">
-            <span>Effort perçu (RPE)</span>
-            <strong id="rpe-cs-label">— / 10</strong>
-          </div>
-          <div class="rpe-scale" id="rpe-cs">
-            <button class="rpe-btn" onclick="setRPE('rpe_cs',1,this)">1</button>
-            <button class="rpe-btn" onclick="setRPE('rpe_cs',2,this)">2</button>
-            <button class="rpe-btn" onclick="setRPE('rpe_cs',3,this)">3</button>
-            <button class="rpe-btn" onclick="setRPE('rpe_cs',4,this)">4</button>
-            <button class="rpe-btn" onclick="setRPE('rpe_cs',5,this)">5</button>
-            <button class="rpe-btn" onclick="setRPE('rpe_cs',6,this)">6</button>
-            <button class="rpe-btn" onclick="setRPE('rpe_cs',7,this)">7</button>
-            <button class="rpe-btn" onclick="setRPE('rpe_cs',8,this)">8</button>
-            <button class="rpe-btn" onclick="setRPE('rpe_cs',9,this)">9</button>
-            <button class="rpe-btn" onclick="setRPE('rpe_cs',10,this)">10</button>
-          </div>
+          <div class="rpe-label-row"><span>Effort perçu (RPE)</span><strong id="rpe-cs-label">— / 10</strong></div>
+          <div class="rpe-scale" id="rpe-cs-scale"></div>
           <div class="rpe-desc">1 = Très facile &nbsp;·&nbsp; 5 = Modéré &nbsp;·&nbsp; 10 = Effort maximal</div>
         </div>
       </div>
     </div>
-    <div class="nav-row">
-      <button class="btn" onclick="goStep(2)">← Retour</button>
-      <button class="btn btn-primary" onclick="goStep(4)">Suivant →</button>
-    </div>
+    <div class="nav-row"><button class="btn" onclick="goStep(3)">← Retour</button><button class="btn btn-primary" onclick="goStep(5)">Suivant →</button></div>
   </div>
 
-  <!-- S4: TUG -->
-  <div class="step" id="s4">
+  <!-- S5: TUG -->
+  <div class="step" id="s5">
     <p class="step-label">Test 3 sur 5</p>
     <div class="test-card">
-      <div class="test-icon-row">
-        <div class="test-icon-circle">⏱</div>
-        <h2>Timed Up and Go (TUG)</h2>
-      </div>
+      <div class="test-icon-row"><div class="test-icon-circle">⏱</div><h2>Timed Up and Go (TUG)</h2></div>
       <p class="desc">Mesure la mobilité fonctionnelle et évalue le risque de chute.</p>
-      <div class="how-to">
-        <p><strong>Comment faire :</strong> Chaise contre un mur, repère à <strong>3 mètres</strong>. Chronométrez : lever, marcher jusqu'au repère, demi-tour, revenir, se rasseoir. Un seul passage.</p>
-      </div>
+      <div class="how-to"><p><strong>Comment faire :</strong> Chaise contre un mur, repère à <strong>3 mètres</strong>. Chronométrez : lever, marcher jusqu'au repère, demi-tour, revenir, se rasseoir. Un seul passage.</p></div>
       <div class="result-rpe-row">
-        <div class="result-field">
-          <input type="number" id="t_tug" placeholder="11.0" min="3" max="90" step="0.1">
-          <span class="unit">secondes</span>
-          <button class="skip-btn" onclick="document.getElementById('t_tug').value='';goStep(5)">Passer ce test</button>
-        </div>
+        <div class="result-field"><input type="number" id="t_tug" placeholder="11.0" min="3" max="90" step="0.1"><span class="unit">secondes</span><button class="skip-btn" onclick="document.getElementById('t_tug').value='';goStep(6)">Passer</button></div>
         <div class="rpe-wrap">
-          <div class="rpe-label-row">
-            <span>Effort perçu (RPE)</span>
-            <strong id="rpe-tug-label">— / 10</strong>
-          </div>
-          <div class="rpe-scale" id="rpe-tug">
-            <button class="rpe-btn" onclick="setRPE('rpe_tug',1,this)">1</button>
-            <button class="rpe-btn" onclick="setRPE('rpe_tug',2,this)">2</button>
-            <button class="rpe-btn" onclick="setRPE('rpe_tug',3,this)">3</button>
-            <button class="rpe-btn" onclick="setRPE('rpe_tug',4,this)">4</button>
-            <button class="rpe-btn" onclick="setRPE('rpe_tug',5,this)">5</button>
-            <button class="rpe-btn" onclick="setRPE('rpe_tug',6,this)">6</button>
-            <button class="rpe-btn" onclick="setRPE('rpe_tug',7,this)">7</button>
-            <button class="rpe-btn" onclick="setRPE('rpe_tug',8,this)">8</button>
-            <button class="rpe-btn" onclick="setRPE('rpe_tug',9,this)">9</button>
-            <button class="rpe-btn" onclick="setRPE('rpe_tug',10,this)">10</button>
-          </div>
+          <div class="rpe-label-row"><span>Effort perçu (RPE)</span><strong id="rpe-tug-label">— / 10</strong></div>
+          <div class="rpe-scale" id="rpe-tug-scale"></div>
           <div class="rpe-desc">1 = Très facile &nbsp;·&nbsp; 5 = Modéré &nbsp;·&nbsp; 10 = Effort maximal</div>
         </div>
       </div>
     </div>
-    <div class="nav-row">
-      <button class="btn" onclick="goStep(3)">← Retour</button>
-      <button class="btn btn-primary" onclick="goStep(5)">Suivant →</button>
-    </div>
+    <div class="nav-row"><button class="btn" onclick="goStep(4)">← Retour</button><button class="btn btn-primary" onclick="goStep(6)">Suivant →</button></div>
   </div>
 
-  <!-- S5: SLS -->
-  <div class="step" id="s5">
+  <!-- S6: SLS -->
+  <div class="step" id="s6">
     <p class="step-label">Test 4 sur 5</p>
     <div class="test-card">
-      <div class="test-icon-row">
-        <div class="test-icon-circle">🦵</div>
-        <h2>Équilibre unipodal (SLS)</h2>
-      </div>
+      <div class="test-icon-row"><div class="test-icon-circle">🦵</div><h2>Équilibre unipodal (SLS)</h2></div>
       <p class="desc">Évalue votre équilibre statique — prédicteur du risque de chute et de la santé neuromotrice.</p>
-      <div class="how-to">
-        <p><strong>Comment faire :</strong> Debout près d'un mur (sans le toucher), levez un pied quelques centimètres. Chronométrez combien de secondes vous tenez sur <strong>une jambe, yeux ouverts</strong>. Maximum 60 secondes.</p>
-      </div>
+      <div class="how-to"><p><strong>Comment faire :</strong> Debout près d'un mur (sans le toucher), levez un pied. Chronométrez combien de secondes vous tenez sur <strong>une jambe, yeux ouverts</strong>. Maximum 60 secondes.</p></div>
       <div class="result-rpe-row">
-        <div class="result-field">
-          <input type="number" id="t_sls" placeholder="20" min="1" max="60">
-          <span class="unit">secondes</span>
-          <button class="skip-btn" onclick="document.getElementById('t_sls').value='';goStep(6)">Passer ce test</button>
-        </div>
+        <div class="result-field"><input type="number" id="t_sls" placeholder="20" min="1" max="60"><span class="unit">secondes</span><button class="skip-btn" onclick="document.getElementById('t_sls').value='';goStep(7)">Passer</button></div>
         <div class="rpe-wrap">
-          <div class="rpe-label-row">
-            <span>Difficulté ressentie</span>
-            <strong id="rpe-sls-label">— / 10</strong>
-          </div>
-          <div class="rpe-scale" id="rpe-sls">
-            <button class="rpe-btn" onclick="setRPE('rpe_sls',1,this)">1</button>
-            <button class="rpe-btn" onclick="setRPE('rpe_sls',2,this)">2</button>
-            <button class="rpe-btn" onclick="setRPE('rpe_sls',3,this)">3</button>
-            <button class="rpe-btn" onclick="setRPE('rpe_sls',4,this)">4</button>
-            <button class="rpe-btn" onclick="setRPE('rpe_sls',5,this)">5</button>
-            <button class="rpe-btn" onclick="setRPE('rpe_sls',6,this)">6</button>
-            <button class="rpe-btn" onclick="setRPE('rpe_sls',7,this)">7</button>
-            <button class="rpe-btn" onclick="setRPE('rpe_sls',8,this)">8</button>
-            <button class="rpe-btn" onclick="setRPE('rpe_sls',9,this)">9</button>
-            <button class="rpe-btn" onclick="setRPE('rpe_sls',10,this)">10</button>
-          </div>
+          <div class="rpe-label-row"><span>Difficulté ressentie</span><strong id="rpe-sls-label">— / 10</strong></div>
+          <div class="rpe-scale" id="rpe-sls-scale"></div>
           <div class="rpe-desc">1 = Très stable &nbsp;·&nbsp; 5 = Instable &nbsp;·&nbsp; 10 = Impossible</div>
         </div>
       </div>
     </div>
-    <div class="nav-row">
-      <button class="btn" onclick="goStep(4)">← Retour</button>
-      <button class="btn btn-primary" onclick="goStep(6)">Suivant →</button>
-    </div>
+    <div class="nav-row"><button class="btn" onclick="goStep(5)">← Retour</button><button class="btn btn-primary" onclick="goStep(7)">Suivant →</button></div>
   </div>
 
-  <!-- S6: 5STS -->
-  <div class="step" id="s6">
+  <!-- S7: 5STS -->
+  <div class="step" id="s7">
     <p class="step-label">Test 5 sur 5</p>
     <div class="test-card">
-      <div class="test-icon-row">
-        <div class="test-icon-circle">⚡</div>
-        <h2>5 Times Sit-to-Stand (5STS)</h2>
-      </div>
+      <div class="test-icon-row"><div class="test-icon-circle">⚡</div><h2>5 Times Sit-to-Stand (5STS)</h2></div>
       <p class="desc">Mesure la puissance fonctionnelle des membres inférieurs — corrélé à la mortalité et au risque de chute.</p>
-      <div class="how-to">
-        <p><strong>Comment faire :</strong> Assis, bras croisés sur la poitrine. Chronométrez le temps pour vous lever et vous rasseoir <strong>5 fois de suite</strong>, le plus vite possible de façon sécuritaire.</p>
-      </div>
+      <div class="how-to"><p><strong>Comment faire :</strong> Assis, bras croisés sur la poitrine. Chronométrez le temps pour vous lever et vous rasseoir <strong>5 fois de suite</strong>, le plus vite possible de façon sécuritaire.</p></div>
       <div class="result-rpe-row">
-        <div class="result-field">
-          <input type="number" id="t_5sts" placeholder="13.0" min="3" max="90" step="0.1">
-          <span class="unit">secondes</span>
-          <button class="skip-btn" onclick="document.getElementById('t_5sts').value='';showResults()">Passer ce test</button>
-        </div>
+        <div class="result-field"><input type="number" id="t_5sts" placeholder="13.0" min="3" max="90" step="0.1"><span class="unit">secondes</span><button class="skip-btn" onclick="document.getElementById('t_5sts').value='';showResults()">Passer</button></div>
         <div class="rpe-wrap">
-          <div class="rpe-label-row">
-            <span>Effort perçu (RPE)</span>
-            <strong id="rpe-5sts-label">— / 10</strong>
-          </div>
-          <div class="rpe-scale" id="rpe-5sts">
-            <button class="rpe-btn" onclick="setRPE('rpe_5sts',1,this)">1</button>
-            <button class="rpe-btn" onclick="setRPE('rpe_5sts',2,this)">2</button>
-            <button class="rpe-btn" onclick="setRPE('rpe_5sts',3,this)">3</button>
-            <button class="rpe-btn" onclick="setRPE('rpe_5sts',4,this)">4</button>
-            <button class="rpe-btn" onclick="setRPE('rpe_5sts',5,this)">5</button>
-            <button class="rpe-btn" onclick="setRPE('rpe_5sts',6,this)">6</button>
-            <button class="rpe-btn" onclick="setRPE('rpe_5sts',7,this)">7</button>
-            <button class="rpe-btn" onclick="setRPE('rpe_5sts',8,this)">8</button>
-            <button class="rpe-btn" onclick="setRPE('rpe_5sts',9,this)">9</button>
-            <button class="rpe-btn" onclick="setRPE('rpe_5sts',10,this)">10</button>
-          </div>
+          <div class="rpe-label-row"><span>Effort perçu (RPE)</span><strong id="rpe-5sts-label">— / 10</strong></div>
+          <div class="rpe-scale" id="rpe-5sts-scale"></div>
           <div class="rpe-desc">1 = Très facile &nbsp;·&nbsp; 5 = Modéré &nbsp;·&nbsp; 10 = Effort maximal</div>
         </div>
       </div>
     </div>
-    <div class="nav-row">
-      <button class="btn" onclick="goStep(5)">← Retour</button>
-      <button class="btn btn-primary" onclick="showResults()">Voir mes résultats →</button>
-    </div>
+    <div class="nav-row"><button class="btn" onclick="goStep(6)">← Retour</button><button class="btn btn-primary" onclick="showResults()">Voir mes résultats →</button></div>
   </div>
 
-  <!-- S7: Résultats -->
-  <div class="step" id="s7">
+  <!-- S8: Résultats -->
+  <div class="step" id="s8">
     <div class="score-hero">
       <div class="score-big" id="res-big">—</div>
       <div class="score-sub">Score Kinoa sur 100</div>
       <div class="score-verdict" id="res-verdict"></div>
     </div>
-
     <p class="section-title">Résultats par domaine vs normes</p>
     <div class="domain-grid" id="domain-grid"></div>
-
     <p class="section-title">Profil radar</p>
-    <div class="radar-wrap">
-      <canvas id="radarChart" role="img" aria-label="Graphique radar du profil fonctionnel"></canvas>
-    </div>
-
+    <div class="radar-wrap"><canvas id="radarChart"></canvas></div>
     <p class="section-title">Rapport clinique personnalisé</p>
     <div class="rapport-wrap">
-      <div class="rapport-header">
-        <h3>Analyse Kinoa</h3>
-        <span class="ai-badge">IA clinique</span>
-      </div>
-      <div id="rapport-content">
-        <div class="rapport-loading">
-          <div class="spinner"></div>
-          <p>Génération de votre rapport personnalisé…</p>
-        </div>
-      </div>
+      <div class="rapport-header"><h3>Analyse Kinoa</h3><span class="ai-badge">IA clinique</span></div>
+      <div id="rapport-content"><div class="rapport-loading"><div class="spinner"></div><p>Génération de votre rapport personnalisé…</p></div></div>
     </div>
-
     <p class="section-title">Plan de départ — 4 semaines</p>
     <div id="plan-container"></div>
-
     <div class="cta-block">
       <h3>Prêt à aller plus loin ?</h3>
-      <p>Un kinésiologue Kinoa peut bâtir votre plan complet sur 12 semaines, adapté à votre arthrose du genou et à votre profil fonctionnel exact.</p>
+      <p>Un kinésiologue Kinoa bâtit votre plan complet sur 12 semaines, adapté à votre arthrose du genou et à votre profil fonctionnel exact.</p>
       <a class="btn-white" href="https://www.kinoa.ca/nous-contacter">Réserver mon appel gratuit (20 min)</a>
     </div>
-
-    <div class="restart-row">
-      <button class="restart-btn" onclick="goStep(0)">← Refaire le bilan</button>
-    </div>
+    <div class="restart-row"><button class="restart-btn" onclick="goStep(0)">← Refaire le bilan</button></div>
   </div>
 </main>
 
 <script>
-const LABELS = ['Intro','Profil','6MWT','Chair Stand','TUG','Équilibre','5STS','Résultats'];
+const LABELS = ['Intro','Clé API','Profil','6MWT','CS-30','TUG','SLS','5STS','Résultats'];
 let radarChart = null;
+let openaiKey = '';
 const rpeValues = { rpe_6mwt: null, rpe_cs: null, rpe_tug: null, rpe_sls: null, rpe_5sts: null };
-const rpeLabelIds = { rpe_6mwt: 'rpe-6mwt-label', rpe_cs: 'rpe-cs-label', rpe_tug: 'rpe-tug-label', rpe_sls: 'rpe-sls-label', rpe_5sts: 'rpe-5sts-label' };
 
-function setRPE(key, val, btn) {
-  rpeValues[key] = val;
-  const containerId = 'rpe-' + key.replace('rpe_','').replace('_','-');
-  const container = document.getElementById(containerId);
-  if (container) container.querySelectorAll('.rpe-btn').forEach(b => b.classList.remove('selected'));
-  btn.classList.add('selected');
-  const labelId = rpeLabelIds[key];
-  if (labelId) document.getElementById(labelId).textContent = val + ' / 10';
+// INIT RPE SCALES
+[
+  {id:'rpe-6mwt-scale',lbl:'rpe-6mwt-label',key:'rpe_6mwt'},
+  {id:'rpe-cs-scale',lbl:'rpe-cs-label',key:'rpe_cs'},
+  {id:'rpe-tug-scale',lbl:'rpe-tug-label',key:'rpe_tug'},
+  {id:'rpe-sls-scale',lbl:'rpe-sls-label',key:'rpe_sls'},
+  {id:'rpe-5sts-scale',lbl:'rpe-5sts-label',key:'rpe_5sts'}
+].forEach(({id,lbl,key}) => {
+  const el = document.getElementById(id);
+  for(let i=1;i<=10;i++){
+    const b=document.createElement('button');
+    b.className='rpe-btn'; b.textContent=i;
+    b.onclick=()=>{
+      rpeValues[key]=i;
+      el.querySelectorAll('.rpe-btn').forEach(x=>x.classList.remove('selected'));
+      b.classList.add('selected');
+      document.getElementById(lbl).textContent=i+' / 10';
+    };
+    el.appendChild(b);
+  }
+});
+
+function goStep(n){
+  document.querySelectorAll('.step').forEach((s,i)=>s.classList.toggle('active',i===n));
+  document.getElementById('progress-bar').style.width=Math.round((n/8)*100)+'%';
+  document.getElementById('prog-left').textContent=LABELS[n];
+  document.getElementById('prog-right').textContent=n<8?`Étape ${n+1} / 8`:'Résultats';
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 
-function goStep(n) {
-  document.querySelectorAll('.step').forEach((s,i) => s.classList.toggle('active', i === n));
-  document.getElementById('progress-bar').style.width = Math.round((n/7)*100) + '%';
-  document.getElementById('prog-left').textContent = LABELS[n];
-  document.getElementById('prog-right').textContent = n < 7 ? `Étape ${n+1} / 7` : 'Résultats';
-  window.scrollTo({top: 0, behavior: 'smooth'});
+function saveKeyAndContinue(){
+  const k=document.getElementById('openai-key').value.trim();
+  if(k) openaiKey=k;
+  goStep(2);
 }
 
-const getAge = () => parseInt(document.getElementById('age').value) || 65;
-const getSexe = () => document.getElementById('sexe').value;
+const getAge=()=>parseInt(document.getElementById('age').value)||65;
+const getSexe=()=>document.getElementById('sexe').value;
 
-// NORMES BENCHMARK par test
-function getNormes(test) {
-  const a = getAge(), s = getSexe();
-  if (test === '6mwt') {
-    const n = {H:[{a:60,lo:399,hi:529,label:'399–529 m'},{a:70,lo:357,hi:487,label:'357–487 m'},{a:80,lo:310,hi:440,label:'310–440 m'}],F:[{a:60,lo:374,hi:504,label:'374–504 m'},{a:70,lo:333,hi:463,label:'333–463 m'},{a:80,lo:287,hi:417,label:'287–417 m'}]};
-    let r = n[s][0]; for(const x of n[s]){if(a>=x.a)r=x;} return r;
-  }
-  if (test === 'cs') {
-    const n = {H:[{a:60,lo:14,hi:19,label:'14–19 rép.'},{a:70,lo:12,hi:17,label:'12–17 rép.'},{a:80,lo:10,hi:15,label:'10–15 rép.'}],F:[{a:60,lo:12,hi:17,label:'12–17 rép.'},{a:70,lo:11,hi:16,label:'11–16 rép.'},{a:80,lo:10,hi:15,label:'10–15 rép.'}]};
-    let r = n[s][0]; for(const x of n[s]){if(a>=x.a)r=x;} return r;
-  }
-  if (test === 'tug') {
-    if(a<70) return {lo:8,hi:12,label:'8–12 s'};
-    if(a<80) return {lo:9,hi:14,label:'9–14 s'};
-    return {lo:11,hi:17,label:'11–17 s'};
-  }
-  if (test === 'sls') {
-    if(a<60) return {lo:20,hi:45,label:'20–45 s'};
-    if(a<70) return {lo:10,hi:30,label:'10–30 s'};
-    return {lo:5,hi:20,label:'5–20 s'};
-  }
-  if (test === '5sts') {
-    const n = {H:[{a:60,lo:9,hi:13,label:'9–13 s'},{a:70,lo:10,hi:15,label:'10–15 s'},{a:80,lo:11,hi:17,label:'11–17 s'}],F:[{a:60,lo:10,hi:14,label:'10–14 s'},{a:70,lo:11,hi:16,label:'11–16 s'},{a:80,lo:12,hi:18,label:'12–18 s'}]};
-    let r = n[s][0]; for(const x of n[s]){if(a>=x.a)r=x;} return r;
-  }
-  return {lo:0,hi:100,label:'—'};
+function getNormes(test){
+  const a=getAge(),s=getSexe();
+  const N={
+    '6mwt':{H:[{a:45,lo:560,hi:650,label:'560–650 m'},{a:60,lo:399,hi:529,label:'399–529 m'},{a:70,lo:357,hi:487,label:'357–487 m'},{a:80,lo:310,hi:440,label:'310–440 m'}],F:[{a:45,lo:530,hi:620,label:'530–620 m'},{a:60,lo:374,hi:504,label:'374–504 m'},{a:70,lo:333,hi:463,label:'333–463 m'},{a:80,lo:287,hi:417,label:'287–417 m'}]},
+    'cs':{H:[{a:45,lo:13,hi:18,label:'13–18 rép.'},{a:60,lo:14,hi:19,label:'14–19 rép.'},{a:70,lo:12,hi:17,label:'12–17 rép.'},{a:80,lo:10,hi:15,label:'10–15 rép.'}],F:[{a:45,lo:12,hi:17,label:'12–17 rép.'},{a:60,lo:12,hi:17,label:'12–17 rép.'},{a:70,lo:11,hi:16,label:'11–16 rép.'},{a:80,lo:10,hi:15,label:'10–15 rép.'}]},
+    '5sts':{H:[{a:50,lo:9,hi:11,label:'9–11 s'},{a:60,lo:9,hi:13,label:'9–13 s'},{a:70,lo:10,hi:15,label:'10–15 s'},{a:80,lo:11,hi:17,label:'11–17 s'}],F:[{a:50,lo:10,hi:12,label:'10–12 s'},{a:60,lo:10,hi:14,label:'10–14 s'},{a:70,lo:11,hi:16,label:'11–16 s'},{a:80,lo:12,hi:18,label:'12–18 s'}]}
+  };
+  if(test==='tug'){if(a<70)return{lo:8,hi:12,label:'8–12 s'};if(a<80)return{lo:9,hi:14,label:'9–14 s'};return{lo:11,hi:17,label:'11–17 s'};}
+  if(test==='sls'){if(a<60)return{lo:20,hi:45,label:'20–45 s'};if(a<70)return{lo:10,hi:30,label:'10–30 s'};return{lo:5,hi:20,label:'5–20 s'};}
+  const arr=N[test][s];let r=arr[0];for(const x of arr){if(a>=x.a)r=x;}return r;
 }
 
-function score6MWT(v){ const r=getNormes('6mwt'); return Math.min(100,Math.max(0,Math.round(50+(v-r.lo)/(r.hi-r.lo)*50))); }
-function scoreCS(v){ const r=getNormes('cs'); return Math.min(100,Math.max(0,Math.round(50+(v-r.lo)/(r.hi-r.lo)*50))); }
-function scoreTUG(v){ const r=getNormes('tug'); return Math.min(100,Math.max(0,Math.round(50+(r.hi-v)/(r.hi-r.lo)*50))); }
-function scoreSLS(v){ const r=getNormes('sls'); return Math.min(100,Math.max(0,Math.round(50+(v-r.lo)/(r.hi-r.lo)*50))); }
-function score5STS(v){ const r=getNormes('5sts'); return Math.min(100,Math.max(0,Math.round(50+(r.hi-v)/(r.hi-r.lo)*50))); }
+function calcScore(test,v){
+  const r=getNormes(test);
+  if(test==='tug'||test==='5sts')return Math.min(100,Math.max(0,Math.round(50+(r.hi-v)/(r.hi-r.lo)*50)));
+  return Math.min(100,Math.max(0,Math.round(50+(v-r.lo)/(r.hi-r.lo)*50)));
+}
 
 function getIMCScore(){
   const p=parseFloat(document.getElementById('poids').value)||80;
@@ -916,202 +484,187 @@ function tagInfo(s){
   return{label:'⚠ Prioritaire',cls:'tag-r',color:'var(--red)'};
 }
 
-function getRisqueClinic(label, sc, val) {
-  if (sc === null) return '';
-  const a = getAge();
-  if (label === 'Mobilité (TUG)' && val !== null && val >= 13.5) return '⚠ Risque de chute élevé (seuil clinique : 13,5 s)';
-  if (label === 'Équilibre (SLS)' && val !== null && val < 5) return '⚠ Risque de chute élevé (seuil clinique : 5 s)';
-  if (label === 'Endurance (6MWT)' && val !== null && val < 300) return '⚠ Limitation fonctionnelle sévère';
-  return '';
+function getRisk(label,val){
+  if(label==='Mobilité (TUG)'&&val>=13.5)return'⚠ Risque de chute élevé (seuil clinique ≥13,5 s)';
+  if(label==='Équilibre (SLS)'&&val<5)return'⚠ Risque de chute élevé (seuil clinique <5 s)';
+  if(label==='Endurance (6MWT)'&&val<300)return'⚠ Limitation fonctionnelle sévère';
+  if(label==='Force (CS-30)'&&val<8)return'⚠ Faiblesse sévère des membres inférieurs';
+  if(label==='Puissance (5STS)'&&val>15)return'⚠ Indicateur de fragilité (>15 s)';
+  return'';
 }
 
-async function generateRapportIA(patientData) {
-  const systemPrompt = `Tu es un kinésiologue clinicien spécialisé en arthrose du genou. Tu rédiges des rapports fonctionnels clairs, bienveillants et actionnables pour des patients de 55-85 ans. Ton langage est simple, sans jargon. Tu es direct et encourageant. Tu ne poses jamais de diagnostic médical.`;
+const RAG_KNOWLEDGE=`BASE DE CONNAISSANCES CLINIQUES KINOA SANTÉ — Tests fonctionnels arthrose du genou 45-85 ans
 
-  const userPrompt = `Voici les résultats du bilan fonctionnel d'un patient :
+NORMES 6MWT: H 45-59 ans ~609 m; H 60-69 ans 550-600 m; H 70-79 ans 450-520 m; H 80+ 350-400 m. F: 30-50 m de moins. Patients OA typiques: ~323 m (âge moyen 67 ans). Seuils: <300 m = limitation sévère + risque mortalité; 300-450 m = limitation modérée; >480 m = proche norme. MDC OA: ≥40-50 m = changement réel; ≥70 m = clairement significatif.
 
-PROFIL : ${patientData.age} ans, ${patientData.sexe === 'H' ? 'Homme' : 'Femme'}, ${patientData.poids} kg, ${patientData.taille} cm, tour de taille ${patientData.tourTaille} cm, IMC ${patientData.imc}
+NORMES CS-30: H 45-60 ans ~13 rép.; H 60-64 ans 14-19 rép.; H 65-69 ans 12-17 rép.; H 70-79 ans 12-17 rép.; F: ~2 rép. de moins. Seuils: <8 rép. à 70-80 ans = fragilité; <5 rép. = faiblesse sévère. MDC OA: ≥3 rép. = changement réel.
 
-RÉSULTATS DES TESTS (valeur brute / norme du groupe d'âge/sexe) :
-- 6MWT (endurance marche) : ${patientData.v6 ? patientData.v6 + ' m' : 'Non fait'} | Norme : ${patientData.norme6} | RPE : ${patientData.rpe6 || '—'}/10
-- CS-30 (force jambes) : ${patientData.vcs ? patientData.vcs + ' répétitions' : 'Non fait'} | Norme : ${patientData.normeCS} | RPE : ${patientData.rpeCS || '—'}/10
-- TUG (mobilité/chute) : ${patientData.vtug ? patientData.vtug + ' s' : 'Non fait'} | Norme : ${patientData.normeTUG} | RPE : ${patientData.rpeTUG || '—'}/10
-- SLS (équilibre) : ${patientData.vsls ? patientData.vsls + ' s' : 'Non fait'} | Norme : ${patientData.normeSLS} | RPE : ${patientData.rpeSLS || '—'}/10
-- 5STS (puissance) : ${patientData.v5 ? patientData.v5 + ' s' : 'Non fait'} | Norme : ${patientData.norme5STS} | RPE : ${patientData.rpe5STS || '—'}/10
+NORMES TUG: Population générale 60 ans: ~8 s; 70 ans: 8,4-8,7 s; 80 ans: ~10,2 s. Patients OA 60-69 ans: ~12,9 s. Seuils critiques: <10 s = bonne mobilité; 10-13,5 s = risque modéré; ≥13,5 s = RISQUE DE CHUTE ÉLEVÉ. MDC OA: ≥2-3 s = changement réel.
 
-SCORES KINOA : ${patientData.scoreDetails}
-SCORE GLOBAL : ${patientData.overall}/100
+NORMES SLS: Adultes 45-60 ans sains: >10 s. 60-69 ans: 10-30 s; 70-79 ans: 5-20 s. Seuils critiques: <5 s = RISQUE DE CHUTE ÉLEVÉ; <10 s = fragilité + mortalité accrue. MDC: gains ≥5-10 s = cliniquement significatifs.
 
-DONNÉES MDC CLINIQUES (changement minimum réel) :
-- 6MWT : amélioration ≥40-50 m = changement réel
-- CS-30 : amélioration ≥3 répétitions = changement réel
-- TUG : amélioration ≥2-3 s = changement réel
-- SLS : amélioration ≥5-10 s = changement réel
-- 5STS : amélioration ≥1,7 s = changement réel
+NORMES 5STS: H 50-59 ans: médiane 9 s; F: 10 s. 60-69 ans: ~11,4 s; 70-79 ans: ~12,6 s; 80-89 ans: ~14,8 s. Seuils: >15 s = risque chute; >16 s = fragilité clinique. MDC OA: ≥1,7 s = changement réel (Amano et al., n=83).
 
-SEUILS DE RISQUE CLINIQUE :
-- TUG ≥13,5 s = risque de chute élevé
-- SLS <5 s = risque de chute élevé
-- 6MWT <300 m = limitation fonctionnelle sévère
+CORRÉLATIONS CLINIQUES: TUG ≥13,5 s + SLS <5 s = 35% patients OA en risque chute élevé. CS-30 + 6MWT expliquent ~48% variance WOMAC. 5STS corrélé vitesse marche et capacité ≥6000 pas/jour. 6MWT AUC 0,86 pour sévérité radiographique.
 
-Génère un rapport structuré en français avec ces 3 sections EXACTEMENT, en HTML simple (balises p, h4, ul, li uniquement) :
+PROGRAMMES EFFICACES (méta-analyses, RCTs, 12 sem, 2-3x/sem, 45-60 min, RPE 13-15/20):
+6MWT: Marche progressive 3-5x/sem, 20-40 min, zone 2. Gains: +30-80 m en 8-12 sem.
+CS-30/5STS: Squats/lever chaise 3x10-15, fentes, step-ups. RPE 6-8/10, phase concentrique rapide. Gains: +2-4 rép. CS-30; -2-3 s 5STS.
+TUG: Circuit lever-marcher-pivot 3x, double tâche progressive, obstacles. Gains: -2-4 s en 12 sem.
+SLS: Équilibre progressif (support → sans support → instable → yeux fermés). 3-5 j/sem, 10-20 min. Gains: +10-20 s en 8-12 sem.
+
+STRUCTURE SÉANCE: Échauffement 5-10 min → Force (CS-30/5STS) → Équilibre (SLS/TUG) → Endurance (6MWT intervalles) → Fonctionnel (circuit TUG) → Retour calme.
+Programmes validés: GLA:D, SAFE, Otago. Si TUG >20 s: commencer avec chaise stable.`;
+
+async function callOpenAI(patientData){
+  if(!openaiKey)return null;
+  const systemPrompt=`Tu es un kinésiologue clinicien spécialisé en arthrose du genou. Tu rédiges des rapports fonctionnels clairs et actionnables pour des patients de 45-85 ans. Langage simple, sans jargon. Direct et encourageant. Tu ne poses JAMAIS de diagnostic médical.\n\nCONNAISSANCES CLINIQUES:\n${RAG_KNOWLEDGE}`;
+  const userPrompt=`Résultats du bilan Kinoa:
+PROFIL: ${patientData.age} ans, ${patientData.sexe==='H'?'Homme':'Femme'}, ${patientData.poids} kg, ${patientData.taille} cm, IMC ${patientData.imc}, tour de taille ${patientData.tourTaille} cm
+6MWT: ${patientData.v6??'Non fait'} m | Norme: ${patientData.norme6} | RPE: ${patientData.rpe6??'—'}/10
+CS-30: ${patientData.vcs??'Non fait'} rép. | Norme: ${patientData.normeCS} | RPE: ${patientData.rpeCS??'—'}/10
+TUG: ${patientData.vtug??'Non fait'} s | Norme: ${patientData.normeTUG} | RPE: ${patientData.rpeTUG??'—'}/10
+SLS: ${patientData.vsls??'Non fait'} s | Norme: ${patientData.normeSLS} | RPE: ${patientData.rpeSLS??'—'}/10
+5STS: ${patientData.v5??'Non fait'} s | Norme: ${patientData.norme5STS} | RPE: ${patientData.rpe5STS??'—'}/10
+Scores: ${patientData.scoreDetails} | Global: ${patientData.overall}/100
+Domaines ROUGES (score <45): ${patientData.domainesRouges.join(', ')||'Aucun'}
+Domaines JAUNES (score 45-69): ${patientData.domainesJaunes.join(', ')||'Aucun'}
+
+Génère un rapport en français avec exactement ces 3 sections en HTML simple (p, h4, ul, li, strong):
 
 <h4>Ce que révèle votre bilan</h4>
-[2-3 phrases synthèse personnalisées sur les résultats globaux et ce qu'ils signifient concrètement pour ce patient dans sa vie quotidienne. Mentionner les domaines forts ET faibles. Personnaliser selon l'âge/sexe.]
+[2-3 phrases de synthèse personnalisées. Score global, points forts et faibles, impact sur la vie quotidienne concrète. Personnaliser selon âge/sexe.]
 
 <h4>Vos résultats en détail</h4>
-[Pour chaque test fait : 1 phrase expliquant le résultat en langage patient (ex: "Vous marchez X mètres en 6 minutes. La norme pour un homme/femme de X ans est de Y mètres. Vous êtes donc..."). Mentionner ce que ça veut dire concrètement (risque de chute, autonomie, etc.). Mentionner le MDC : "Pour constater une vraie amélioration, vous devrez gagner [X]".]
+[Pour chaque test fait: "Vous avez fait X. La norme pour un homme/femme de X ans est Y. Cela signifie que..." + MDC: "Pour constater une vraie amélioration, vous devrez gagner [X]". Si TUG ≥13,5 s ou SLS <5 s: mentionner explicitement le risque de chute.]
 
-<h4>Plan de départ — 4 semaines</h4>
-[3 à 5 exercices personnalisés selon les domaines les plus faibles. Pour chaque exercice : nom, description simple (2 phrases max), fréquence/semaine, durée ou répétitions, et comment progresser à la semaine 4. Format : liste avec titre en gras.]
+<h4>Votre plan de départ — 4 semaines</h4>
+[3-5 exercices selon domaines ROUGES et JAUNES. Pour chaque: <strong>Nom</strong> — description 1-2 phrases. Fréquence: X fois/sem. Durée/rép. Progression sem. 4.]
 
-Termine par une phrase d'encouragement et une invitation à consulter un kinésiologue Kinoa pour le plan complet 12 semaines.`;
-
-  try {
-    const response = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 1000,
-        system: systemPrompt,
-        messages: [{ role: 'user', content: userPrompt }]
-      })
-    });
-    const data = await response.json();
-    return data.content?.[0]?.text || null;
-  } catch(e) {
-    return null;
-  }
+Terminer par phrase d'encouragement + invitation kinésiologue Kinoa pour plan complet 12 semaines.`;
+  try{
+    const r=await fetch('https://api.openai.com/v1/chat/completions',{method:'POST',headers:{'Content-Type':'application/json','Authorization':`Bearer ${openaiKey}`},body:JSON.stringify({model:'gpt-4o',max_tokens:1400,temperature:0.4,messages:[{role:'system',content:systemPrompt},{role:'user',content:userPrompt}]})});
+    const d=await r.json();
+    if(d.error){console.error('OpenAI:',d.error.message);return null;}
+    return d.choices?.[0]?.message?.content||null;
+  }catch(e){console.error('API error:',e);return null;}
 }
 
-async function showResults() {
-  const v6 = parseFloat(document.getElementById('t_6mwt').value);
-  const vcs = parseFloat(document.getElementById('t_cs').value);
-  const vtug = parseFloat(document.getElementById('t_tug').value);
-  const vsls = parseFloat(document.getElementById('t_sls').value);
-  const v5 = parseFloat(document.getElementById('t_5sts').value);
-  const age = getAge(), sexe = getSexe();
-  const poids = parseFloat(document.getElementById('poids').value)||80;
-  const taille = parseFloat(document.getElementById('taille').value)||170;
-  const tourTaille = parseFloat(document.getElementById('tour-taille').value)||90;
-  const imc = (poids/((taille/100)**2)).toFixed(1);
+const FALLBACK_PLAN={
+  '6MWT':{titre:'Marche progressive',desc:"Marchez sur terrain plat à un rythme où vous pouvez parler. Augmentez graduellement la durée.",freq:'3–5×/sem',param:'20 min → 35 min sem. 4',prog:'Ajouter 5 min/semaine'},
+  'CS-30':{titre:'Lever de chaise',desc:"Assis sur une chaise haute, levez-vous et rasseyez-vous lentement. Sans les bras. Progressez vers une chaise plus basse.",freq:'3×/sem',param:'3 × 10 répétitions',prog:'Chaise plus basse sem. 4'},
+  'TUG':{titre:'Circuit lever-marcher',desc:"Levez-vous, marchez 3 m, faites demi-tour, revenez, asseyez-vous. Ajoutez progressivement une double tâche.",freq:'3×/sem',param:'3 × 5 passages',prog:'Ajouter double tâche sem. 4'},
+  'SLS':{titre:'Équilibre unipodal',desc:"Tenez-vous sur une jambe près d'un mur. Progressez : yeux ouverts → yeux fermés → surface instable.",freq:'Quotidien',param:'3 × 30 s par jambe',prog:'Yeux fermés sem. 4'},
+  '5STS':{titre:'Lever de chaise rapide × 5',desc:"Levez-vous et rasseyez-vous 5 fois aussi vite que possible, de façon sécuritaire. Repos complet entre séries.",freq:'3×/sem',param:'4 séries de 5 rép.',prog:'Chaise plus basse sem. 4'}
+};
 
-  const scores = {
-    'Endurance (6MWT)': isNaN(v6) ? null : score6MWT(v6),
-    'Force (CS-30)': isNaN(vcs) ? null : scoreCS(vcs),
-    'Mobilité (TUG)': isNaN(vtug) ? null : scoreTUG(vtug),
-    'Équilibre (SLS)': isNaN(vsls) ? null : scoreSLS(vsls),
-    'Puissance (5STS)': isNaN(v5) ? null : score5STS(v5),
-    'Corps (IMC)': getIMCScore()
-  };
-  const rawVals = {
-    'Endurance (6MWT)': isNaN(v6)?null:v6,
-    'Force (CS-30)': isNaN(vcs)?null:vcs,
-    'Mobilité (TUG)': isNaN(vtug)?null:vtug,
-    'Équilibre (SLS)': isNaN(vsls)?null:vsls,
-    'Puissance (5STS)': isNaN(v5)?null:v5,
-    'Corps (IMC)': null
-  };
-  const units = {'Endurance (6MWT)':'m','Force (CS-30)':'rép.','Mobilité (TUG)':'s','Équilibre (SLS)':'s','Puissance (5STS)':'s','Corps (IMC)':''};
-  const normeLabels = {
-    'Endurance (6MWT)': getNormes('6mwt').label,
-    'Force (CS-30)': getNormes('cs').label,
-    'Mobilité (TUG)': getNormes('tug').label,
-    'Équilibre (SLS)': getNormes('sls').label,
-    'Puissance (5STS)': getNormes('5sts').label,
-    'Corps (IMC)': 'IMC 22–25'
-  };
-  const rpeMap = {'Endurance (6MWT)':rpeValues.rpe_6mwt,'Force (CS-30)':rpeValues.rpe_cs,'Mobilité (TUG)':rpeValues.rpe_tug,'Équilibre (SLS)':rpeValues.rpe_sls,'Puissance (5STS)':rpeValues.rpe_5sts};
+async function showResults(){
+  const v6=parseFloat(document.getElementById('t_6mwt').value);
+  const vcs=parseFloat(document.getElementById('t_cs').value);
+  const vtug=parseFloat(document.getElementById('t_tug').value);
+  const vsls=parseFloat(document.getElementById('t_sls').value);
+  const v5=parseFloat(document.getElementById('t_5sts').value);
+  const age=getAge(),sexe=getSexe();
+  const poids=parseFloat(document.getElementById('poids').value)||80;
+  const taille=parseFloat(document.getElementById('taille').value)||170;
+  const tourTaille=parseFloat(document.getElementById('tour-taille').value)||90;
+  const imc=(poids/((taille/100)**2)).toFixed(1);
 
-  const valid = Object.values(scores).filter(v => v !== null);
-  const overall = valid.length ? Math.round(valid.reduce((a,b) => a+b, 0)/valid.length) : 0;
+  const domLabels=['Endurance (6MWT)','Force (CS-30)','Mobilité (TUG)','Équilibre (SLS)','Puissance (5STS)','Corps (IMC)'];
+  const rawVals=[isNaN(v6)?null:v6,isNaN(vcs)?null:vcs,isNaN(vtug)?null:vtug,isNaN(vsls)?null:vsls,isNaN(v5)?null:v5,null];
+  const normeTests=['6mwt','cs','tug','sls','5sts'];
+  const units=['m','rép.','s','s','s',''];
+  const rpeKeys=['rpe_6mwt','rpe_cs','rpe_tug','rpe_sls','rpe_5sts',null];
+  const sc=[
+    isNaN(v6)?null:calcScore('6mwt',v6),
+    isNaN(vcs)?null:calcScore('cs',vcs),
+    isNaN(vtug)?null:calcScore('tug',vtug),
+    isNaN(vsls)?null:calcScore('sls',vsls),
+    isNaN(v5)?null:calcScore('5sts',v5),
+    getIMCScore()
+  ];
 
-  document.getElementById('res-big').textContent = overall;
-  const vEl = document.getElementById('res-verdict');
+  const valid=sc.filter(v=>v!==null);
+  const overall=valid.length?Math.round(valid.reduce((a,b)=>a+b,0)/valid.length):0;
+
+  document.getElementById('res-big').textContent=overall;
+  const vEl=document.getElementById('res-verdict');
   if(overall>=70){vEl.textContent='Excellent profil fonctionnel';vEl.style.background='rgba(29,158,117,0.25)';}
   else if(overall>=45){vEl.textContent='Des marges de progression identifiées';vEl.style.background='rgba(232,71,10,0.25)';}
   else{vEl.textContent='Priorité à la rééducation fonctionnelle';vEl.style.background='rgba(220,38,38,0.25)';}
 
-  // DOMAIN GRID WITH BENCHMARK
-  const grid = document.getElementById('domain-grid');
-  grid.innerHTML = '';
-  for(const [label, sc] of Object.entries(scores)){
-    const {label:tag,cls,color:c} = tagInfo(sc);
-    const rawVal = rawVals[label];
-    const unit = units[label];
-    const norme = normeLabels[label];
-    const rpe = rpeMap[label];
-    const risque = getRisqueClinic(label, sc, rawVal);
-    grid.innerHTML += `
-      <div class="domain-card">
-        <div class="d-header">
-          <div class="d-label">${label}</div>
-          <span class="d-tag ${cls}">${tag}</span>
-        </div>
-        <div class="d-score" style="color:${sc!==null?c:'#8890AA'}">${sc!==null?sc:'—'}<small style="font-size:14px;font-weight:400;color:var(--text-faint)">/100</small></div>
-        <div class="d-benchmark">
-          ${rawVal!==null?`<span><span>Votre résultat</span><span class="b-val">${rawVal} ${unit}</span></span>`:''}
-          <span><span>Norme (votre âge/sexe)</span><span class="b-val">${norme}</span></span>
-          ${rpe?`<span><span>Effort perçu</span><span class="b-val">${rpe}/10</span></span>`:''}
-        </div>
-        ${risque?`<div class="d-rpe" style="color:var(--red);margin-top:6px">${risque}</div>`:''}
-      </div>`;
-  }
+  const grid=document.getElementById('domain-grid');
+  grid.innerHTML='';
+  domLabels.forEach((label,i)=>{
+    const s=sc[i],rv=rawVals[i],unit=units[i];
+    const norme=i<5?getNormes(normeTests[i]).label:'IMC 22–25';
+    const rpe=rpeKeys[i]?rpeValues[rpeKeys[i]]:null;
+    const{label:tag,cls,color:c}=tagInfo(s);
+    const risk=rv!==null?getRisk(label,rv):'';
+    grid.innerHTML+=`<div class="domain-card">
+      <div class="d-header"><div class="d-label">${label}</div><span class="d-tag ${cls}">${tag}</span></div>
+      <div class="d-score" style="color:${s!==null?c:'#8890AA'}">${s!==null?s:'—'}<small style="font-size:14px;font-weight:400;color:var(--text-faint)">/100</small></div>
+      <div class="d-benchmark">
+        ${rv!==null?`<span><span>Votre résultat</span><span class="b-val">${rv} ${unit}</span></span>`:''}
+        <span><span>Norme (âge/sexe)</span><span class="b-val">${norme}</span></span>
+        ${rpe?`<span><span>RPE</span><span class="b-val">${rpe}/10</span></span>`:''}
+      </div>
+      ${risk?`<div class="d-risk">${risk}</div>`:''}
+    </div>`;
+  });
 
-  // RADAR
   if(radarChart){radarChart.destroy();radarChart=null;}
-  const radarLabels = Object.keys(scores).map(l=>l.split(' ')[0]);
-  const radarData = Object.values(scores).map(v=>v===null?0:v);
-  radarChart = new Chart(document.getElementById('radarChart'),{
+  radarChart=new Chart(document.getElementById('radarChart'),{
     type:'radar',
-    data:{labels:radarLabels,datasets:[
-      {label:'Mon profil',data:radarData,backgroundColor:'rgba(232,71,10,0.1)',borderColor:'#E8470A',borderWidth:2,pointBackgroundColor:'#E8470A',pointRadius:4},
-      {label:'Référence',data:radarLabels.map(()=>70),backgroundColor:'transparent',borderColor:'rgba(26,35,64,0.15)',borderWidth:1,borderDash:[4,4],pointRadius:0}
+    data:{labels:['Endurance','Force','Mobilité','Équilibre','Puissance','Corps'],datasets:[
+      {label:'Mon profil',data:sc.map(v=>v===null?0:v),backgroundColor:'rgba(232,71,10,0.1)',borderColor:'#E8470A',borderWidth:2,pointBackgroundColor:'#E8470A',pointRadius:4},
+      {label:'Référence',data:[70,70,70,70,70,70],backgroundColor:'transparent',borderColor:'rgba(26,35,64,0.15)',borderWidth:1,borderDash:[4,4],pointRadius:0}
     ]},
     options:{responsive:true,maintainAspectRatio:false,scales:{r:{min:0,max:100,ticks:{stepSize:25,color:'rgba(26,35,64,0.4)',font:{size:11},backdropColor:'transparent'},grid:{color:'rgba(26,35,64,0.08)'},angleLines:{color:'rgba(26,35,64,0.08)'},pointLabels:{color:'rgba(26,35,64,0.65)',font:{size:12}}}},plugins:{legend:{display:false}}}
   });
 
-  goStep(7);
+  goStep(8);
 
-  // GENERATE AI RAPPORT
-  const scoreDetails = Object.entries(scores).map(([k,v])=>`${k}: ${v!==null?v:'N/A'}/100`).join(', ');
-  const patientData = {
-    age, sexe, poids, taille, tourTaille, imc, overall,
-    v6: isNaN(v6)?null:v6, norme6: getNormes('6mwt').label, rpe6: rpeValues.rpe_6mwt,
-    vcs: isNaN(vcs)?null:vcs, normeCS: getNormes('cs').label, rpeCS: rpeValues.rpe_cs,
-    vtug: isNaN(vtug)?null:vtug, normeTUG: getNormes('tug').label, rpeTUG: rpeValues.rpe_tug,
-    vsls: isNaN(vsls)?null:vsls, normeSLS: getNormes('sls').label, rpeSLS: rpeValues.rpe_sls,
-    v5: isNaN(v5)?null:v5, norme5STS: getNormes('5sts').label, rpe5STS: rpeValues.rpe_5sts,
-    scoreDetails
+  const domainesRouges=domLabels.filter((_,i)=>sc[i]!==null&&sc[i]<45);
+  const domainesJaunes=domLabels.filter((_,i)=>sc[i]!==null&&sc[i]>=45&&sc[i]<70);
+  const scoreDetails=domLabels.map((l,i)=>`${l}: ${sc[i]!==null?sc[i]:'N/A'}/100`).join(' | ');
+
+  const patientData={
+    age,sexe,poids,taille,tourTaille,imc,overall,scoreDetails,domainesRouges,domainesJaunes,
+    v6:isNaN(v6)?null:v6,norme6:getNormes('6mwt').label,rpe6:rpeValues.rpe_6mwt,
+    vcs:isNaN(vcs)?null:vcs,normeCS:getNormes('cs').label,rpeCS:rpeValues.rpe_cs,
+    vtug:isNaN(vtug)?null:vtug,normeTUG:getNormes('tug').label,rpeTUG:rpeValues.rpe_tug,
+    vsls:isNaN(vsls)?null:vsls,normeSLS:getNormes('sls').label,rpeSLS:rpeValues.rpe_sls,
+    v5:isNaN(v5)?null:v5,norme5STS:getNormes('5sts').label,rpe5STS:rpeValues.rpe_5sts
   };
 
-  const rapportText = await generateRapportIA(patientData);
+  const rapportText=await callOpenAI(patientData);
+  const rapportContent=document.getElementById('rapport-content');
 
-  const rapportContent = document.getElementById('rapport-content');
-  if(rapportText) {
-    rapportContent.innerHTML = `<div class="rapport-body">${rapportText}</div>`;
-    // Extract plan from rapport and render as plan cards too
-    document.getElementById('plan-container').innerHTML = '';
-  } else {
-    // Fallback statique si l'API ne répond pas
-    const sorted = Object.entries(scores).filter(([,v])=>v!==null&&v<70).sort((a,b)=>a[1]-b[1]);
-    const recoMap = {
-      'Endurance (6MWT)':'Marche progressive 3×/sem, 20–30 min, à un rythme où vous pouvez parler. Visez +50 m en 8 semaines.',
-      'Force (CS-30)':'Lever-asseoir de chaise (chaise haute → chaise standard), 3×/sem, 3 séries × 10 répétitions. Progression : chaise plus basse semaine 4.',
-      'Mobilité (TUG)':'Pratique du "lever-marcher" : se lever, marcher 3 m, tourner, revenir. 3×/sem, 5 répétitions. Avec obstacles progressivement.',
-      'Équilibre (SLS)':'Équilibre unipodal quotidien : 3 × 30 s par jambe. Commencer près d\'un mur. Progresser yeux fermés semaine 4.',
-      'Puissance (5STS)':'Lever de chaise × 5 aussi vite que possible, 3×/sem, 4 séries. Progression : chaise plus basse ou gilet lesté semaine 4.',
-      'Corps (IMC)':'Augmenter l\'activité physique quotidienne et revoir l\'apport en protéines (1,2 g/kg/jour). Objectif IMC 22–25.'
-    };
-    rapportContent.innerHTML = `<div class="rapport-body"><p>Rapport généré localement (connexion IA indisponible).</p></div>`;
-    const planContainer = document.getElementById('plan-container');
-    planContainer.innerHTML = '';
-    if(!sorted.length){
-      planContainer.innerHTML='<div class="plan-card"><div class="pc-header"><div class="pc-num">✓</div><div class="pc-title">Excellent profil</div></div><div class="pc-body">Maintenez vos habitudes et progressez vers des objectifs de performance à long terme.</div></div>';
-    } else {
-      sorted.slice(0,4).forEach(([label],i)=>{
-        planContainer.innerHTML+=`<div class="plan-card"><div class="pc-header"><div class="pc-num">${i+1}</div><div class="pc-title">${label.split(' ')[0]}</div></div><div class="pc-body">${recoMap[label]||''}</div></div>`;
+  if(rapportText){
+    rapportContent.innerHTML=`<div class="rapport-body">${rapportText}</div>`;
+    document.getElementById('plan-container').innerHTML='';
+  }else{
+    rapportContent.innerHTML=`<div class="rapport-body">
+      <p><strong>Rapport de base</strong> (sans clé API OpenAI). Pour un rapport clinique complet et personnalisé, entrez votre clé à l'étape 2 ou réservez un appel avec un kinésiologue Kinoa.</p>
+      <p>Score global : <strong>${overall}/100</strong>. ${domainesRouges.length?'Domaines prioritaires : '+domainesRouges.join(', ')+'.':'Votre profil fonctionnel est globalement satisfaisant.'} ${domainesJaunes.length?'Domaines à améliorer : '+domainesJaunes.join(', ')+'.':''}</p>
+    </div>`;
+
+    const planContainer=document.getElementById('plan-container');
+    planContainer.innerHTML='';
+    const keyMap={'Endurance (6MWT)':'6MWT','Force (CS-30)':'CS-30','Mobilité (TUG)':'TUG','Équilibre (SLS)':'SLS','Puissance (5STS)':'5STS'};
+    const priorites=[...domainesRouges,...domainesJaunes].slice(0,4);
+    if(!priorites.length){
+      planContainer.innerHTML=`<div class="plan-card"><div class="pc-header"><div class="pc-num">✓</div><div class="pc-title">Excellent profil</div></div><div class="pc-body">Maintenez vos habitudes et progressez vers des objectifs à long terme.</div></div>`;
+    }else{
+      priorites.forEach((label,i)=>{
+        const k=keyMap[label];if(!k)return;
+        const ex=FALLBACK_PLAN[k];
+        planContainer.innerHTML+=`<div class="plan-card">
+          <div class="pc-header"><div class="pc-num">${i+1}</div><div class="pc-title">${ex.titre}</div></div>
+          <div class="pc-body">${ex.desc}</div>
+          <div class="pc-params"><span class="pc-param">📅 ${ex.freq}</span><span class="pc-param">⏱ ${ex.param}</span><span class="pc-param">📈 ${ex.prog}</span></div>
+        </div>`;
       });
     }
   }
