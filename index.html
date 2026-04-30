@@ -689,6 +689,25 @@ async function showResults(){
     }
   }
 }
+ function submitLead() {
+  const prenom = document.getElementById('leadPrenom').value.trim();
+  const email  = document.getElementById('leadEmail').value.trim();
+  const tel    = document.getElementById('leadTel').value.trim();
+  if (!prenom || !email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    alert('Veuillez entrer votre prénom et un courriel valide.');
+    return;
+  }
+  const btn = document.getElementById('leadBtn');
+  btn.textContent = 'Envoi…'; btn.disabled = true;
+  fetch(APPS_SCRIPT_URL, {
+    method: 'POST', mode: 'no-cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ prenom, email, tel }),
+  }).finally(() => {
+    document.getElementById('leadFormSection').innerHTML =
+      '<p style="color:var(--green);font-weight:500;padding:1rem 0">✓ Reçu ! Vérifiez votre courriel dans les prochaines minutes.</p>';
+  });
+}
 </script>
 </body>
 </html>
