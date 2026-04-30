@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bilan Fonctionnel | Kinoa Santé</title>
+<meta name="description" content="Évaluez votre condition physique en 5 tests simples à faire chez vous. Obtenez votre profil Kinoa personnalisé.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --orange: #E8470A;
+    --orange-light: #FDF0EB;
+    --orange-dark: #C23B08;
+    --navy: #1A2340;
+    --navy-mid: #2D3A5C;
+    --lavender: #EEF0F8;
+    --lavender-dark: #DDE1F0;
+    --text: #1A2340;
+    --text-muted: #4A5270;
+    --text-faint: #8890AA;
+    --border: rgba(26,35,64,0.12);
+    --bg: #EEF0F8;
+    --bg-card: #ffffff;
+    --bg-surface: #F5F6FB;
+    --radius: 16px;
+    --radius-sm: 10px;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px; color: var(--text);
+    background: var(--bg); min-height: 100vh; line-height: 1.6;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(238,240,248,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-weight: 800;
+    color: var(--navy); text-decoration: none; letter-spacing: -0.01em;
+  }
+  .logo span { color: var(--orange); }
+  .nav-cta {
+    background: var(--orange); color: white;
+    padding: 8px 20px; border-radius: 50px;
+    font-size: 14px; font-weight: 500; text-decoration: none;
+    transition: background 0.15s;
+  }
+  .nav-cta:hover { background: var(--orange-dark); }
+
+  /* HERO */
+  .hero {
+    max-width: 680px; margin: 0 auto;
+    padding: 4rem 1.5rem 2.5rem; text-align: center;
+  }
+  .pill {
+    display: inline-block;
+    font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+    color: var(--orange); background: var(--orange-light);
+    padding: 5px 16px; border-radius: 20px;
+    margin-bottom: 1.25rem; text-transform: uppercase;
+    border: 1px solid rgba(232,71,10,0.2);
+  }
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(30px, 5vw, 46px);
+    line-height: 1.1; letter-spacing: -0.02em;
+    color: var(--navy); margin-bottom: 1rem; font-weight: 800;
+  }
+  h1 em { font-style: italic; color: var(--orange); }
+  .hero-sub {
+    font-size: 17px; color: var(--text-muted);
+    max-width: 500px; margin: 0 auto 2rem; line-height: 1.7;
+  }
+  .time-note {
+    font-size: 13px; color: var(--orange);
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+  }
+
+  /* MAIN */
+  main { max-width: 580px; margin: 0 auto; padding: 2rem 1.5rem 5rem; }
+
+  /* PROGRESS */
+  .progress-wrap { margin-bottom: 2rem; }
+  .progress-track {
+    height: 4px; background: var(--lavender-dark);
+    border-radius: 2px; overflow: hidden; margin-bottom: 0.5rem;
+  }
+  .progress-fill {
+    height: 100%; background: var(--orange);
+    border-radius: 2px; transition: width 0.4s ease;
+  }
+  .progress-label {
+    font-size: 12px; color: var(--text-faint);
+    display: flex; justify-content: space-between;
+  }
+
+  /* STEPS */
+  .step { display: none; animation: fadeUp 0.3s ease; }
+  .step.active { display: block; }
+  @keyframes fadeUp {
+    from { opacity:0; transform: translateY(8px); }
+    to { opacity:1; transform: translateY(0); }
+  }
+  .step-label {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+    color: var(--orange); text-transform: uppercase; margin-bottom: 1.5rem;
+  }
+
+  /* FORM FIELDS */
+  .field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .field label { font-size: 14px; color: var(--text-muted); }
+  .field input, .field select {
+    height: 48px; padding: 0 14px;
+    border: 1.5px solid var(--border); border-radius: var(--radius-sm);
+    background: var(--bg-card); color: var(--text);
+    font-family: 'DM Sans', sans-serif; font-size: 15px;
+    transition: border-color 0.15s; -webkit-appearance: none;
+  }
+  .field input:focus, .field select:focus {
+    outline: none; border-color: var(--orange);
+    box-shadow: 0 0 0 3px rgba(232,71,10,0.1);
+  }
+  .slider-field { margin-bottom: 1.5rem; }
+  .slider-label { font-size: 14px; color: var(--text-muted); display: flex; justify-content: space-between; margin-bottom: 8px; }
+  .slider-label strong { font-weight: 500; color: var(--navy); }
+  input[type=range] { width: 100%; accent-color: var(--orange); }
+
+  /* TEST CARD */
+  .test-card {
+    background: var(--bg-card); border: 1.5px solid var(--border);
+    border-radius: var(--radius); padding: 1.75rem; margin-bottom: 1.5rem;
+  }
+  .test-icon-row {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 1rem;
+  }
+  .test-icon-circle {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--orange-light); border: 1px solid rgba(232,71,10,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; flex-shrink: 0;
+  }
+  .test-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; font-weight: 700; color: var(--navy);
+    letter-spacing: -0.01em;
+  }
+  .test-card .desc {
+    font-size: 14px; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.65;
+  }
+  .how-to {
+    background: var(--bg-surface); border-radius: var(--radius-sm);
+    padding: 1rem 1.125rem; margin-bottom: 1.25rem;
+    border-left: 3px solid var(--orange);
+  }
+  .how-to p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+  .how-to strong { color: var(--navy); font-weight: 500; }
+  .result-field { display: flex; align-items: center; gap: 10px; }
+  .result-field input {
+    width: 120px; height: 48px;
+    border: 1.5px solid var(--border); border-radius: var(--radius-sm);
+    padding: 0 14px; font-size: 20px; font-weight: 500;
+    font-family: 'DM Sans', sans-serif; color: var(--navy);
+    background: var(--bg-card); transition: border-color 0.15s;
+    -webkit-appearance: none;
+  }
+  .result-field input:focus {
+    outline: none; border-color: var(--orange);
+    box-shadow: 0 0 0 3px rgba(232,71,10,0.1);
+  }
+  .result-field .unit { font-size: 14px; color: var(--text-faint); }
+  .skip-btn {
+    font-size: 13px; color: var(--text-faint); margin-left: auto;
+    cursor: pointer; text-decoration: underline;
+    background: none; border: none; font-family: inherit;
+  }
+
+  /* BUTTONS */
+  .nav-row { display: flex; align-items: center; gap: 10px; margin-top: 1.5rem; }
+  .btn {
+    height: 48px; padding: 0 22px;
+    border-radius: 50px; font-family: 'DM Sans', sans-serif;
+    font-size: 15px; font-weight: 500; cursor: pointer;
+    border: 1.5px solid var(--border);
+    background: var(--bg-card); color: var(--text);
+    transition: all 0.15s;
+  }
+  .btn:hover { background: var(--lavender-dark); }
+  .btn-primary {
+    background: var(--orange); color: white;
+    border-color: var(--orange); margin-left: auto;
+    padding: 0 28px;
+  }
+  .btn-primary:hover { background: var(--orange-dark); border-color: var(--orange-dark); }
+
+  /* RESULTS */
+  .score-hero {
+    text-align: center; padding: 2.5rem 1.5rem;
+    background: var(--navy); border-radius: var(--radius);
+    margin-bottom: 1.5rem;
+  }
+  .score-big {
+    font-family: 'Playfair Display', serif;
+    font-size: 80px; line-height: 1; font-weight: 800;
+    color: white; letter-spacing: -0.03em; margin-bottom: 0.25rem;
+  }
+  .score-sub { font-size: 14px; color: rgba(255,255,255,0.6); }
+  .score-verdict {
+    display: inline-block; margin-top: 0.875rem;
+    font-size: 13px; font-weight: 500; padding: 5px 18px;
+    border-radius: 20px; color: white;
+    border: 1px solid rgba(255,255,255,0.25);
+  }
+
+  .section-title {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--orange);
+    margin-bottom: 0.75rem; margin-top: 2rem;
+  }
+
+  .domain-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .domain-card {
+    background: var(--bg-card); border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm); padding: 1rem;
+    text-align: center;
+  }
+  .domain-card .d-label { font-size: 11px; color: var(--text-faint); margin-bottom: 4px; }
+  .domain-card .d-score { font-size: 24px; font-weight: 500; color: var(--navy); margin-bottom: 4px; }
+  .domain-card .d-tag {
+    font-size: 11px; font-weight: 500; padding: 3px 10px;
+    border-radius: 10px; display: inline-block;
+  }
+  .tag-v { background: #E1F5EE; color: #085041; }
+  .tag-j { background: #FEF3C7; color: #92400E; }
+  .tag-r { background: #FEE2E2; color: #991B1B; }
+  .tag-n { background: var(--bg-surface); color: var(--text-faint); }
+
+  .radar-wrap { height: 280px; position: relative; margin: 0.5rem 0 1rem; }
+
+  .reco-card {
+    background: var(--bg-card); border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm); padding: 1.125rem 1.25rem;
+    margin-bottom: 0.75rem; display: flex; gap: 12px; align-items: flex-start;
+  }
+  .reco-num {
+    width: 26px; height: 26px; border-radius: 50%;
+    background: var(--orange); color: white;
+    font-size: 12px; font-weight: 500; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center; margin-top: 1px;
+  }
+  .reco-card p { font-size: 14px; color: var(--text-muted); line-height: 1.65; }
+
+  .cta-block {
+    background: var(--orange); border-radius: var(--radius);
+    padding: 2rem 2rem; text-align: center; margin-top: 2rem;
+  }
+  .cta-block h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px; font-weight: 700; color: white;
+    margin-bottom: 0.5rem; letter-spacing: -0.01em;
+  }
+  .cta-block p { font-size: 14px; color: rgba(255,255,255,0.85); margin-bottom: 1.25rem; line-height: 1.6; }
+  .btn-white {
+    display: inline-block; background: white; color: var(--orange);
+    padding: 13px 30px; border-radius: 50px;
+    font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 500;
+    text-decoration: none; transition: opacity 0.15s;
+  }
+  .btn-white:hover { opacity: 0.92; }
+
+  .restart-row { text-align: center; margin-top: 1.5rem; }
+  .restart-btn {
+    font-size: 14px; color: var(--text-faint);
+    background: none; border: none; cursor: pointer;
+    font-family: inherit; text-decoration: underline;
+  }
+
+  @media (max-width: 480px) {
+    .field-grid { grid-template-columns: 1fr; }
+    .domain-grid { grid-template-columns: 1fr 1fr; }
+    nav { padding: 0 1rem; }
+    .hero { padding: 2.5rem 1rem 1.5rem; }
+    main { padding: 1.5rem 1rem 4rem; }
+    h1 { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="https://www.kinoa.ca">Kin<span>OA</span></a>
+  <a class="nav-cta" href="https://www.kinoa.ca/nous-contacter">Réserver un appel gratuit</a>
+</nav>
+
+<section class="hero">
+  <div class="pill">Bilan fonctionnel gratuit</div>
+  <h1>Connaissez votre <em>vrai</em><br>niveau de forme</h1>
+  <p class="hero-sub">5 tests simples à faire chez vous. Comparez-vous aux normes de votre groupe d'âge et recevez votre profil Kinoa personnalisé.</p>
+  <p class="time-note">⏱ Environ 15–20 minutes pour compléter les tests</p>
+</section>
+
+<main>
+  <div class="progress-wrap">
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-bar" style="width:0%"></div>
+    </div>
+    <div class="progress-label">
+      <span id="prog-left">Profil</span>
+      <span id="prog-right">Étape 1 / 6</span>
+    </div>
+  </div>
+
+  <!-- S0: Profil -->
+  <div class="step active" id="s0">
+    <p class="step-label">Votre profil</p>
+    <div class="field-grid">
+      <div class="field"><label>Âge</label><input type="number" id="age" min="40" max="90" value="65"></div>
+      <div class="field"><label>Sexe</label>
+        <select id="sexe"><option value="H">Homme</option><option value="F">Femme</option></select>
+      </div>
+      <div class="field"><label>Poids (kg)</label><input type="number" id="poids" min="40" max="200" value="80"></div>
+      <div class="field"><label>Taille (cm)</label><input type="number" id="taille" min="140" max="210" value="170"></div>
+    </div>
+    <div class="slider-field">
+      <div class="slider-label"><span>Tour de taille (cm)</span><strong id="tw-out">90</strong></div>
+      <input type="range" id="tour-taille" min="60" max="140" value="90" oninput="document.getElementById('tw-out').textContent=this.value">
+    </div>
+    <div class="nav-row">
+      <div style="flex:1"></div>
+      <button class="btn btn-primary" onclick="goStep(1)">Commencer les tests →</button>
+    </div>
+  </div>
+
+  <!-- S1: 6MWT -->
+  <div class="step" id="s1">
+    <p class="step-label">Test 1 sur 5</p>
+    <div class="test-card">
+      <div class="test-icon-row">
+        <div class="test-icon-circle">🚶</div>
+        <h2>Test de marche de 6 minutes</h2>
+      </div>
+      <p class="desc">Mesure votre endurance cardiorespiratoire et votre capacité fonctionnelle globale.</p>
+      <div class="how-to">
+        <p><strong>Comment faire :</strong> Marchez le plus loin possible sur une surface plane (corridor, trottoir, piste) pendant exactement <strong>6 minutes</strong>. Vous pouvez ralentir mais ne vous arrêtez pas. Mesurez la distance totale parcourue en mètres.</p>
+      </div>
+      <div class="result-field">
+        <input type="number" id="t_6mwt" placeholder="420" min="50" max="1000">
+        <span class="unit">mètres</span>
+        <button class="skip-btn" onclick="document.getElementById('t_6mwt').value='';goStep(2)">Passer ce test</button>
+      </div>
+    </div>
+    <div class="nav-row">
+      <button class="btn" onclick="goStep(0)">← Retour</button>
+      <button class="btn btn-primary" onclick="goStep(2)">Suivant →</button>
+    </div>
+  </div>
+
+  <!-- S2: Chair Stand -->
+  <div class="step" id="s2">
+    <p class="step-label">Test 2 sur 5</p>
+    <div class="test-card">
+      <div class="test-icon-row">
+        <div class="test-icon-circle">🪑</div>
+        <h2>30-Second Chair Stand</h2>
+      </div>
+      <p class="desc">Évalue la force et l'endurance musculaire de vos membres inférieurs.</p>
+      <div class="how-to">
+        <p><strong>Comment faire :</strong> Assis sur une chaise sans accoudoirs, les bras <strong>croisés sur la poitrine</strong>. Levez-vous complètement, rasseyez-vous. Répétez le maximum de fois possible en <strong>30 secondes exactement</strong>.</p>
+      </div>
+      <div class="result-field">
+        <input type="number" id="t_cs" placeholder="12" min="1" max="40">
+        <span class="unit">répétitions</span>
+        <button class="skip-btn" onclick="document.getElementById('t_cs').value='';goStep(3)">Passer ce test</button>
+      </div>
+    </div>
+    <div class="nav-row">
+      <button class="btn" onclick="goStep(1)">← Retour</button>
+      <button class="btn btn-primary" onclick="goStep(3)">Suivant →</button>
+    </div>
+  </div>
+
+  <!-- S3: TUG -->
+  <div class="step" id="s3">
+    <p class="step-label">Test 3 sur 5</p>
+    <div class="test-card">
+      <div class="test-icon-row">
+        <div class="test-icon-circle">⏱</div>
+        <h2>Timed Up and Go (TUG)</h2>
+      </div>
+      <p class="desc">Mesure la mobilité fonctionnelle et évalue le risque de chute.</p>
+      <div class="how-to">
+        <p><strong>Comment faire :</strong> Placez une chaise contre un mur, marquez un point à <strong>3 mètres</strong>. Assis, chronométrez : lever, marcher jusqu'au point, demi-tour, revenir, se rasseoir. Un seul passage.</p>
+      </div>
+      <div class="result-field">
+        <input type="number" id="t_tug" placeholder="11.0" min="3" max="90" step="0.1">
+        <span class="unit">secondes</span>
+        <button class="skip-btn" onclick="document.getElementById('t_tug').value='';goStep(4)">Passer ce test</button>
+      </div>
+    </div>
+    <div class="nav-row">
+      <button class="btn" onclick="goStep(2)">← Retour</button>
+      <button class="btn btn-primary" onclick="goStep(4)">Suivant →</button>
+    </div>
+  </div>
+
+  <!-- S4: SLS -->
+  <div class="step" id="s4">
+    <p class="step-label">Test 4 sur 5</p>
+    <div class="test-card">
+      <div class="test-icon-row">
+        <div class="test-icon-circle">🦵</div>
+        <h2>Équilibre unipodal (SLS)</h2>
+      </div>
+      <p class="desc">Évalue votre équilibre statique — prédicteur du risque de chute et de la santé neuromotrice.</p>
+      <div class="how-to">
+        <p><strong>Comment faire :</strong> Debout près d'un mur (sans le toucher), levez un pied quelques centimètres. Chronométrez combien de secondes vous tenez en équilibre sur <strong>une jambe, yeux ouverts</strong>. Maximum 60 secondes.</p>
+      </div>
+      <div class="result-field">
+        <input type="number" id="t_sls" placeholder="20" min="1" max="60">
+        <span class="unit">secondes</span>
+        <button class="skip-btn" onclick="document.getElementById('t_sls').value='';goStep(5)">Passer ce test</button>
+      </div>
+    </div>
+    <div class="nav-row">
+      <button class="btn" onclick="goStep(3)">← Retour</button>
+      <button class="btn btn-primary" onclick="goStep(5)">Suivant →</button>
+    </div>
+  </div>
+
+  <!-- S5: 5STS -->
+  <div class="step" id="s5">
+    <p class="step-label">Test 5 sur 5</p>
+    <div class="test-card">
+      <div class="test-icon-row">
+        <div class="test-icon-circle">⚡</div>
+        <h2>5 Times Sit-to-Stand (5STS)</h2>
+      </div>
+      <p class="desc">Mesure la puissance fonctionnelle des membres inférieurs — corrélé à la mortalité et au risque de chute.</p>
+      <div class="how-to">
+        <p><strong>Comment faire :</strong> Assis, bras croisés sur la poitrine. Chronométrez le temps pour vous lever et vous rasseoir <strong>5 fois de suite</strong>, le plus vite possible.</p>
+      </div>
+      <div class="result-field">
+        <input type="number" id="t_5sts" placeholder="13.0" min="3" max="90" step="0.1">
+        <span class="unit">secondes</span>
+        <button class="skip-btn" onclick="document.getElementById('t_5sts').value='';showResults()">Passer ce test</button>
+      </div>
+    </div>
+    <div class="nav-row">
+      <button class="btn" onclick="goStep(4)">← Retour</button>
+      <button class="btn btn-primary" onclick="showResults()">Voir mes résultats →</button>
+    </div>
+  </div>
+
+  <!-- S6: Résultats -->
+  <div class="step" id="s6">
+    <div class="score-hero">
+      <div class="score-big" id="res-big">—</div>
+      <div class="score-sub">Score Kinoa sur 100</div>
+      <div class="score-verdict" id="res-verdict"></div>
+    </div>
+
+    <p class="section-title">Résultats par domaine</p>
+    <div class="domain-grid" id="domain-grid"></div>
+
+    <p class="section-title">Profil radar</p>
+    <div class="radar-wrap">
+      <canvas id="radarChart" role="img" aria-label="Graphique radar du profil fonctionnel"></canvas>
+    </div>
+
+    <p class="section-title">Recommandations prioritaires</p>
+    <div id="reco-container"></div>
+
+    <div class="cta-block">
+      <h3>Prêt à aller plus loin ?</h3>
+      <p>Un kinésiologue Kinoa peut bâtir votre plan d'exercices personnalisé, adapté à votre arthrose du genou et à votre profil fonctionnel.</p>
+      <a class="btn-white" href="https://www.kinoa.ca/nous-contacter">Réserver mon appel gratuit (20 min)</a>
+    </div>
+
+    <div class="restart-row">
+      <button class="restart-btn" onclick="goStep(0)">← Refaire le bilan</button>
+    </div>
+  </div>
+</main>
+
+<script>
+const LABELS = ['Profil','6MWT','Chair Stand','TUG','Équilibre','5STS','Résultats'];
+let radarChart = null;
+
+function goStep(n) {
+  document.querySelectorAll('.step').forEach((s,i)=>s.classList.toggle('active',i===n));
+  document.getElementById('progress-bar').style.width=Math.round((n/6)*100)+'%';
+  document.getElementById('prog-left').textContent=LABELS[n];
+  document.getElementById('prog-right').textContent=n<6?`Étape ${n+1} / 6`:'Résultats';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+const getAge=()=>parseInt(document.getElementById('age').value)||65;
+const getSexe=()=>document.getElementById('sexe').value;
+
+function score6MWT(v){
+  const a=getAge(),s=getSexe();
+  const n={H:[{a:60,lo:399,hi:529},{a:70,lo:357,hi:487},{a:80,lo:310,hi:440}],F:[{a:60,lo:374,hi:504},{a:70,lo:333,hi:463},{a:80,lo:287,hi:417}]};
+  let r=n[s][0];for(const x of n[s]){if(a>=x.a)r=x;}
+  return Math.min(100,Math.max(0,Math.round(50+(v-r.lo)/(r.hi-r.lo)*50)));
+}
+function scoreCS(v){
+  const a=getAge(),s=getSexe();
+  const n={H:[{a:60,lo:14,hi:19},{a:70,lo:12,hi:17},{a:80,lo:10,hi:15}],F:[{a:60,lo:12,hi:17},{a:70,lo:11,hi:16},{a:80,lo:10,hi:15}]};
+  let r=n[s][0];for(const x of n[s]){if(a>=x.a)r=x;}
+  return Math.min(100,Math.max(0,Math.round(50+(v-r.lo)/(r.hi-r.lo)*50)));
+}
+function scoreTUG(v){
+  const a=getAge();
+  const r=a<70?{lo:8,hi:12}:a<80?{lo:9,hi:14}:{lo:11,hi:17};
+  return Math.min(100,Math.max(0,Math.round(50+(r.hi-v)/(r.hi-r.lo)*50)));
+}
+function scoreSLS(v){
+  const a=getAge();
+  const r=a<60?{lo:20,hi:45}:a<70?{lo:10,hi:30}:{lo:5,hi:20};
+  return Math.min(100,Math.max(0,Math.round(50+(v-r.lo)/(r.hi-r.lo)*50)));
+}
+function score5STS(v){
+  const a=getAge(),s=getSexe();
+  const n={H:[{a:60,lo:9,hi:13},{a:70,lo:10,hi:15},{a:80,lo:11,hi:17}],F:[{a:60,lo:10,hi:14},{a:70,lo:11,hi:16},{a:80,lo:12,hi:18}]};
+  let r=n[s][0];for(const x of n[s]){if(a>=x.a)r=x;}
+  return Math.min(100,Math.max(0,Math.round(50+(r.hi-v)/(r.hi-r.lo)*50)));
+}
+function getIMCScore(){
+  const p=parseFloat(document.getElementById('poids').value)||80;
+  const t=parseFloat(document.getElementById('taille').value)||170;
+  const tw=parseFloat(document.getElementById('tour-taille').value)||90;
+  const imc=p/((t/100)**2),whr=tw/t;
+  let s=100;
+  if(imc<18.5||imc>=30)s=30;else if(imc>=25)s=60;
+  if(whr>0.5)s=Math.min(s,55);
+  return Math.round(s);
+}
+function tagInfo(s){
+  if(s===null)return{label:'Non fait',cls:'tag-n',color:'#8890AA'};
+  if(s>=70)return{label:'Optimal',cls:'tag-v',color:'#1D9E75'};
+  if(s>=45)return{label:'À améliorer',cls:'tag-j',color:'#B45309'};
+  return{label:'Prioritaire',cls:'tag-r',color:'#991B1B'};
+}
+
+function showResults(){
+  const v6=parseFloat(document.getElementById('t_6mwt').value);
+  const vcs=parseFloat(document.getElementById('t_cs').value);
+  const vtug=parseFloat(document.getElementById('t_tug').value);
+  const vsls=parseFloat(document.getElementById('t_sls').value);
+  const v5=parseFloat(document.getElementById('t_5sts').value);
+  const scores={'Endurance':isNaN(v6)?null:score6MWT(v6),'Force':isNaN(vcs)?null:scoreCS(vcs),'Mobilité':isNaN(vtug)?null:scoreTUG(vtug),'Équilibre':isNaN(vsls)?null:scoreSLS(vsls),'Puissance':isNaN(v5)?null:score5STS(v5),'Corps':getIMCScore()};
+  const valid=Object.values(scores).filter(v=>v!==null);
+  const overall=valid.length?Math.round(valid.reduce((a,b)=>a+b,0)/valid.length):0;
+  document.getElementById('res-big').textContent=overall;
+  const vEl=document.getElementById('res-verdict');
+  if(overall>=70){vEl.textContent='Excellent profil fonctionnel';vEl.style.background='rgba(29,158,117,0.25)';}
+  else if(overall>=45){vEl.textContent='Des marges de progression identifiées';vEl.style.background='rgba(232,71,10,0.25)';}
+  else{vEl.textContent='Priorité à la rééducation fonctionnelle';vEl.style.background='rgba(220,38,38,0.25)';}
+
+  const grid=document.getElementById('domain-grid');
+  grid.innerHTML='';
+  for(const[label,sc]of Object.entries(scores)){
+    const{label:tag,cls,color:c}=tagInfo(sc);
+    grid.innerHTML+=`<div class="domain-card"><div class="d-label">${label}</div><div class="d-score" style="color:${sc!==null?c:'#8890AA'}">${sc!==null?sc:'—'}</div><span class="d-tag ${cls}">${tag}</span></div>`;
+  }
+
+  if(radarChart){radarChart.destroy();radarChart=null;}
+  const labels=Object.keys(scores);
+  const data=Object.values(scores).map(v=>v===null?0:v);
+  radarChart=new Chart(document.getElementById('radarChart'),{
+    type:'radar',
+    data:{labels,datasets:[{label:'Mon profil',data,backgroundColor:'rgba(232,71,10,0.1)',borderColor:'#E8470A',borderWidth:2,pointBackgroundColor:'#E8470A',pointRadius:4},{label:'Référence',data:labels.map(()=>70),backgroundColor:'transparent',borderColor:'rgba(26,35,64,0.15)',borderWidth:1,borderDash:[4,4],pointRadius:0}]},
+    options:{responsive:true,maintainAspectRatio:false,scales:{r:{min:0,max:100,ticks:{stepSize:25,color:'rgba(26,35,64,0.4)',font:{size:11},backdropColor:'transparent'},grid:{color:'rgba(26,35,64,0.08)'},angleLines:{color:'rgba(26,35,64,0.08)'},pointLabels:{color:'rgba(26,35,64,0.65)',font:{size:12}}}},plugins:{legend:{display:false}}}
+  });
+
+  const recoMap={
+    'Endurance':'Intégrez 3×/sem une marche rapide ou un vélo stationnaire en zone 2 (20–30 min). La progression du 6MWT est l\'un des meilleurs indicateurs de santé cardiovasculaire.',
+    'Force':'Exercices de chaise squat et montées de marches progressives 3×/sem. La force des membres inférieurs ralentit directement la progression de l\'arthrose.',
+    'Mobilité':'Votre TUG indique un risque de chute à surveiller. Priorité aux exercices d\'équilibre, de renforcement et à la qualité de la marche.',
+    'Équilibre':'Pratiquez l\'équilibre unipodal quotidiennement : commencez yeux ouverts, progressez vers yeux fermés, puis sur surface instable.',
+    'Puissance':'La puissance fonctionnelle est faible — entraînement lever/asseoir avec résistance progressive (theraband, gilet lesté).',
+    'Corps':'Revoyez l\'alimentation protéique et augmentez l\'activité physique pour viser un IMC entre 22–25. La masse corporelle est le facteur modifiable no.1 dans l\'arthrose du genou.'
+  };
+
+  const sorted=Object.entries(scores).filter(([,v])=>v!==null&&v<70).sort((a,b)=>a[1]-b[1]);
+  const container=document.getElementById('reco-container');
+  container.innerHTML='';
+  if(!sorted.length){
+    container.innerHTML='<div class="reco-card"><div class="reco-num">✓</div><p>Excellent profil fonctionnel — maintenez vos habitudes et progressez vers des objectifs de performance à long terme.</p></div>';
+  }else{
+    sorted.slice(0,3).forEach(([label],i)=>{
+      container.innerHTML+=`<div class="reco-card"><div class="reco-num">${i+1}</div><p>${recoMap[label]||''}</p></div>`;
+    });
+  }
+  goStep(6);
+}
+</script>
+</body>
+</html>
