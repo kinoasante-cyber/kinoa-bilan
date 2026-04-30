@@ -594,7 +594,9 @@ async function showResults(){
   const v6=parseFloat(document.getElementById('t_6mwt').value);
   const vcs=parseFloat(document.getElementById('t_cs').value);
   const vtug=parseFloat(document.getElementById('t_tug').value);
-  const vsls=parseFloat(document.getElementById('t_sls').value);
+  const vsls_g=parseFloat(document.getElementById('t_sls_g').value);
+  const vsls_d=parseFloat(document.getElementById('t_sls_d').value);
+  const vsls=Math.min(isNaN(vsls_g)?60:vsls_g, isNaN(vsls_d)?60:vsls_d);
   const v5=parseFloat(document.getElementById('t_5sts').value);
   const age=getAge(),sexe=getSexe();
   const poids=parseFloat(document.getElementById('poids').value)||80;
