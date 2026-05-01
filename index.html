@@ -594,6 +594,21 @@ const FALLBACK_PLAN={
   '5STS':{titre:'Lever de chaise rapide × 5',desc:"Levez-vous et rasseyez-vous 5 fois aussi vite que possible, de façon sécuritaire. Repos complet entre séries.",freq:'3×/sem',param:'4 séries de 5 rép.',prog:'Chaise plus basse sem. 4'}
 };
 
+async function callWorkerRapport(scores) {
+  try {
+    const res = await fetch('https://kinoa-api-bridge.kinoa-sante.workers.dev/rapport', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ scores })
+    });
+    const data = await res.json();
+    return data.rapport || null;
+  } catch(e) {
+    console.error('Worker rapport error:', e);
+    return null;
+  }
+}
+ 
 async function showResults(){
   const v6=parseFloat(document.getElementById('t_6mwt').value);
   const vcs=parseFloat(document.getElementById('t_cs').value);
