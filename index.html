@@ -699,13 +699,14 @@ async function showResults(){
   document.getElementById('score-explain').textContent = scoreExplain;
 
 const rapportText = await callWorkerRapport({
-  endurance: sc[0] ?? 0,
-  force:     sc[1] ?? 0,
-  mobilite:  sc[2] ?? 0,
-  equilibre: sc[3] ?? 0,
-  puissance: sc[4] ?? 0,
+  endurance: sc[0] ?? 0, valeur_6mwt: isNaN(v6) ? null : v6, norme_6mwt: getNormes('6mwt').label,
+  force:     sc[1] ?? 0, valeur_cs: isNaN(vcs) ? null : vcs, norme_cs: getNormes('cs').label,
+  mobilite:  sc[2] ?? 0, valeur_tug: isNaN(vtug) ? null : vtug, norme_tug: getNormes('tug').label,
+  equilibre: sc[3] ?? 0, valeur_sls: isNaN(vsls) ? null : vsls, norme_sls: getNormes('sls').label,
+  puissance: sc[4] ?? 0, valeur_5sts: isNaN(v5) ? null : v5, norme_5sts: getNormes('5sts').label,
   corps:     sc[5] ?? 0,
-  global:    overall
+  global:    overall,
+  age, sexe
 });
   const rapportContent=document.getElementById('rapport-content');
 
