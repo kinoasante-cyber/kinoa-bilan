@@ -710,7 +710,11 @@ const rapportText = await callWorkerRapport({
   const rapportContent=document.getElementById('rapport-content');
 
   if(rapportText){
-    rapportContent.innerHTML=`<div class="rapport-body">${rapportText}</div>`;
+  const rapportHTML = rapportText
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\n\n/g, '</p><p>')
+    .replace(/\n/g, '<br>');
+  rapportContent.innerHTML=`<div class="rapport-body"><p>${rapportHTML}</p></div>`;
     document.getElementById('plan-container').innerHTML='';
   }else{
     rapportContent.innerHTML=`<div class="rapport-body">
