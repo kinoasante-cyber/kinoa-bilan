@@ -672,7 +672,22 @@ async function showResults(){
     v5:isNaN(v5)?null:v5,norme5STS:getNormes('5sts').label,rpe5STS:rpeValues.rpe_5sts
   };
 
-  const rapportText=await callOpenAI(patientData);
+  const scoreExplain = overall >= 70
+  ? `Votre profil fonctionnel est solide. Vous performez au-dessus des normes pour votre groupe d'âge dans la majorité des domaines.`
+  : overall >= 45
+  ? `Votre profil montre des forces et des zones à travailler. Un programme ciblé peut faire une vraie différence en 8–12 semaines.`
+  : `Votre bilan révèle plusieurs domaines prioritaires. Un suivi avec un kinésiologue est recommandé pour progresser de façon sécuritaire.`;
+  document.getElementById('score-explain').textContent = scoreExplain;
+
+const rapportText = await callWorkerRapport({
+  endurance: sc[0] ?? 0,
+  force:     sc[1] ?? 0,
+  mobilite:  sc[2] ?? 0,
+  equilibre: sc[3] ?? 0,
+  puissance: sc[4] ?? 0,
+  corps:     sc[5] ?? 0,
+  global:    overall
+});
   const rapportContent=document.getElementById('rapport-content');
 
   if(rapportText){
