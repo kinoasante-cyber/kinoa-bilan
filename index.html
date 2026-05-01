@@ -422,7 +422,7 @@
   <div class="lead-field"><label>Nom *</label><input type="text" id="leadNom" placeholder="Tremblay"></div>
 </div>
 <div class="lead-field"><label>Courriel *</label><input type="email" id="leadEmail" placeholder="votre@courriel.com"></div>
-<label>Téléphone *</label>
+<div class="lead-field"><label>Téléphone *</label><input type="tel" id="leadTel" placeholder="514 000-0000"></div>
   <p class="lead-privacy">🔒 Vos informations restent confidentielles et ne sont jamais revendues.</p>
   <div class="nav-row" style="margin-top:1rem">
     <button class="btn btn-primary" onclick="submitLead()" id="leadBtn">Recevoir mon plan →</button>
@@ -728,7 +728,7 @@ const rapportText = await callWorkerRapport({
   const email  = document.getElementById('leadEmail').value.trim();
   const tel    = document.getElementById('leadTel').value.trim();
 
-  if (!prenom || !nom || !email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+  if (!prenom || !nom || !email || !tel || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     alert('Veuillez entrer votre prénom, nom et un courriel valide.');
     return;
   }
